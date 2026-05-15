@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nuestra Esencia | Bar El Candil</title>
+    <link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --neon-color: #ff3c00; 
+            --neon-glow: 0 0 10px #ff3c00, 0 0 20px #ff3c00, 0 0 40px #ff3c00, 0 0 80px #ff3c00, 0 0 120px #ff3c00;
+            --neon-glow-subtle: 0 0 5px #ff3c00, 0 0 10px #ff3c00, 0 0 15px #ff3c00;
+            --dark-bg: #0a0a0a;
+            --card-bg: #151515;
+            --text-light: #f5f5f5;
+            --accent-wood: #8b4513;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--dark-bg);
+            color: var(--text-light);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* --- BANNER DINÁMICO --- */
+        .banner {
+            display: flex;
+            height: 300px;
+            width: 100%;
+            overflow: hidden;
+            border-bottom: 3px solid var(--neon-color);
+            box-shadow: 0 4px 15px var(--neon-glow-subtle); /* Añade un sutil brillo al banner */
+        }
+
+        .banner-img {
+            flex: 1;
+            background-size: cover;
+            background-position: center;
+            transition: flex 0.5s ease;
+        }
+
+        .banner-img:hover {
+            flex: 2;
+        }
+
+        nav {
+            background-color: var(--neon-color);
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            text-align: center;
+            box-shadow: 0 4px 15px var(--neon-glow);
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 20px;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: opacity 0.3s;
+        }
+
+        nav a:hover {
+            opacity: 0.7;
+        }
+
+        /* --- CONTENIDO PRINCIPAL --- */
+        .hero {
+            padding: 80px 20px;
+            text-align: center;
+            /* Aquí usamos la imagen del letrero como fondo del título */
+            background: linear-gradient(rgba(10,10,10,0.8), rgba(10,10,10,0.8)), url('EL CANDIL.jpg');
+            background-size: cover;
+            background-position: center;
+        }
+
+        .hero h1 {
+            /* APLICAMOS LA FUENTE PERMANENT MARKER */
+            font-family: 'Permanent Marker', cursive;
+            font-size: 5rem; /* Aumentado ligeramente para mayor impacto con esta fuente */
+            text-transform: uppercase; /* Asegura mayúsculas para un look más "marker" */
+            color: white; /* El centro del neón a menudo parece blanco */
+            
+            /* APLICAMOS EL EFECTO NEÓN ROJO NARANJA */
+            text-shadow: 
+                0 0 10px #fff, /* Brillo blanco interior sutil */
+                0 0 20px #fff,
+                var(--neon-glow); /* Todo el brillo rojo naranja */
+            
+            margin-bottom: 15px;
+            letter-spacing: 2px; /* Un poco más de espacio entre letras */
+        }
+        .header-esencia {
+            padding: 60px 20px;
+            text-align: center;
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('ELCANDIL14.png');
+            background-size: cover;
+            background-position: center;
+        }
+
+        .header-esencia h1 {
+            font-family: 'Permanent Marker', cursive;
+            font-size: 3.5rem;
+            color: white;
+            text-shadow: var(--neon-glow);
+            margin-bottom: 10px;
+        }
+
+        section {
+            padding: 60px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .content-section {
+            max-width: 1000px;
+            margin: 40px auto;
+            padding: 20px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: center;
+        }
+
+        .text-block h2 {
+            font-family: 'Permanent Marker', cursive;
+            color: var(--neon-color);
+            font-size: 2.2rem;
+            margin-bottom: 20px;
+        }
+
+        .text-block p {
+            margin-bottom: 15px;
+            font-size: 1.1rem;
+            color: #ccc;
+        }
+
+        .image-frame {
+            border: 5px solid #222;
+            box-shadow: 10px 10px 0px var(--neon-color);
+            overflow: hidden;
+        }
+
+        .image-frame img {
+            width: 100%;
+            display: block;
+            transition: transform 0.5s;
+        }
+
+        .image-frame:hover img {
+            transform: scale(1.05);
+        }
+        .rock-banner {
+            background: #111;
+            padding: 50px 20px;
+            text-align: center;
+            border-top: 2px solid #333;
+            border-bottom: 2px solid #333;
+            margin: 40px 0;
+        }
+
+        .rock-tag {
+            display: inline-block;
+            background: var(--neon-color);
+            padding: 5px 15px;
+            font-weight: bold;
+            transform: rotate(-2deg);
+            margin-bottom: 20px;
+        }
+
+        .details-grid {
+            max-width: 1200px;
+            margin: 40px auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            padding: 20px;
+        }
+
+        .detail-card {
+            background: var(--card-bg);
+            border-radius: 15px;
+            padding: 20px;
+            text-align: center;
+            border: 1px solid #333;
+        }
+
+        .detail-card img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            border-radius: 10px;
+            margin-bottom: 15px;
+        }
+
+        .signature {
+            font-family: 'Permanent Marker', cursive;
+            color: var(--neon-color);
+            margin-top: 10px;
+            display: block;
+        }
+
+
+        @media (max-width: 768px) {
+            .content-section { grid-template-columns: 1fr; }
+            .header-esencia h1 { font-size: 2.5rem; }
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+        }
+
+        .card {
+            background: #151515;
+            padding: 20px;
+            border-radius: 10px;
+            border: 1px solid #222;
+        }
+
+        .card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 5px;
+            margin-bottom: 15px;
+        }
+
+        /* --- FOOTER CON MAPA --- */
+        footer {
+            background: #000;
+            padding: 50px 20px;
+            border-top: 3px solid var(--neon-color);
+            box-shadow: 0 -4px 15px var(--neon-glow-subtle); /* Brillo sutil hacia arriba */
+        }
+
+        .footer-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .map-container iframe {
+            width: 100%;
+            height: 300px;
+            border: 0;
+            border-radius: 10px;
+            filter: grayscale(1) invert(1) contrast(1.2);
+        }
+
+        .contact-info h3 {
+            color: var(--neon-color);
+            margin-bottom: 20px;
+            /* Opcional: Un ligero brillo neón al título del footer */
+            text-shadow: var(--neon-glow-subtle);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="banner">
+        <div class="banner-img" style="background-image: url('ELCANDIL14.png');"></div>
+        <div class="banner-img" style="background-image: url('ELCANDIL7.jpeg');"></div>
+    </div>
+
+    <nav>
+        <a href="index.html">Inicio</a>
+        <a href="esencia.html">Nuestra Esencia</a>
+        <a href="ubicacion.html">Localización</a>
+    </nav>
+
+    <header class="header-esencia">
+        <h1>EL CANDIL</h1>
+        <p>Tradición y Calidez en Páramo del Sil</p>
+    </header>
+
+    <section id="experiencia">
+        <div class="grid">
+            <div class="card">
+                <img src="ELCANDIL17.jpeg" alt="Terraza de El Candil">
+                <h3>La Terraza</h3>
+                <p>Ubicada frente al parque Álvarez Carballo, es el rincón perfecto para relajarse, mientras los niños juegan en el parque.</p>
+            </div>
+            <div class="card">
+                <img src="ELCANDIL9.jpeg" alt="Café en El Candil">
+                <h3>Momentos Dulces</h3>
+                <p>Nuestros cafés y bollería artesanal son el motor de cada mañana. No dejes de probar nuestro clásico rosco.</p>
+            </div>
+            <div class="card">
+                <img src="ELCANDIL4.jpeg" alt="Detalle interior El Candil">
+                <h3>Calidez y Tradición</h3>
+                <p>Un ambiente acogedor donde Jose y Ana te harán sentir como en casa, y podrás disfrutar tu estancia.</p>
+            </div>
+        </div>
+    </section>
+
+    <footer id="ubicacion">
+        <div class="footer-container">
+            <div class="contact-info">
+                <h3>Contacto</h3>
+                <p>📍 Calle la Vega 20</p>
+                <p>24470 Páramo del Sil, León</p>
+                <br>
+                <p><strong>Ubicación privilegiada:</strong></p>
+                <p>Justo delante del Parque Infantil Álvarez Carballo.</p>
+            </div>
+            <div class="map-container">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d93742.2645955401!2d-6.4930372499999995!3d42.75777694999999!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd30cd006ba87b9f%3A0x60d63e15d3190436!2sEl%20candil!5e0!3m2!1ses!2ses!4v1778864750012!5m2!1ses!2ses" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+        </div>
+        <p style="text-align:center; margin-top:40px; font-size: 0.8rem; opacity: 0.5;">© 2024 Bar El Candil. Programado para Jose y Ana.</p>
+    </footer>
+
+</body>
+</html>
