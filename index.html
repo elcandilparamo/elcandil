@@ -4,7 +4,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Nuestra Esencia | Bar El Candil</title>
-    <link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap" rel="stylesheet">
+
+    <meta name="author" content="ciberbross90">
+    <meta name="copyright" content="ciberbross90">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+
+
+
     <style>
         :root {
             --neon-color: #ff3c00; 
@@ -268,6 +279,27 @@
             /* Opcional: Un ligero brillo neón al título del footer */
             text-shadow: var(--neon-glow-subtle);
         }
+        .modal-content {
+            max-height: 70vh;
+            overflow-y: auto;
+        }
+        #cookieBanner {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            z-index: 99999;
+            background: white;
+            display: block; 
+        }
+	@keyframes bounce-slow {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .animate-bounce-slow {
+            animation: bounce-slow 3s infinite ease-in-out;
+        }
     </style>
 </head>
 <body>
@@ -308,22 +340,446 @@
         </div>
     </section>
 
-    <footer id="ubicacion">
-        <div class="footer-container">
-            <div class="contact-info">
-                <h3>Contacto</h3>
-                <p>📍 Calle la Vega 20</p>
-                <p>24470 Páramo del Sil, León</p>
-                <br>
-                <p><strong>Ubicación privilegiada:</strong></p>
-                <p>Justo delante del Parque Infantil Álvarez Carballo.</p>
+<footer class="bg-gray-900 text-white pt-10 pb-6 border-t-4 border-[##ff3c00]" id="ubicacion">
+    <div class="footer-container">
+        <div class="contact-info" style="text-align: center;">
+            <h3>Contacto</h3>
+            <p>📍 Calle la Vega 20</p>
+            <p>24470 Páramo del Sil, León</p>
+            <br>
+            <p><strong>Ubicación privilegiada:</strong></p>
+            <p>Justo delante del Parque Infantil Álvarez Carballo.</p>
+        </div>
+        <div class="map-container" style="display: flex; justify-content: center;">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d93742.2645955401!2d-6.4930372499999995!3d42.75777694999999!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd30cd006ba87b9f%3A0x60d63e15d3190436!2sEl%20candil!5e0!3m2!1ses!2ses!4v1778864750012!5m2!1ses!2ses" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+    </div>
+
+    <style>
+        .footer-btn {
+            color: #ffffff !important; /* Texto blanco */
+            font-size: 12px !important;  /* Un 20% más grande que el 10px original */
+            background: none;
+            border: none;
+            cursor: pointer;
+            text-transform: uppercase;
+            font-weight: bold;
+            transition: color 0.3s ease, text-shadow 0.3s ease;
+        }
+        /* Efecto al pasar el cursor: cambia al rojo-naranja neón de la página */
+        .footer-btn:hover {
+            color: #ff3c00 !important;
+            text-shadow: 0 0 10px #ff3c00, 0 0 20px #ff3c00;
+        }
+    </style>
+
+    <div style="text-align: center; margin-top: 3rem; padding-top: 1.5rem; border-top: 1px solid #222;">
+        <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 2rem; margin-bottom: 1rem;">
+            <button onclick="toggleModal('modalLegal')" class="footer-btn">Aviso Legal</button>
+            <button onclick="toggleModal('modalUso')" class="footer-btn">Condiciones de Uso</button>
+            <button onclick="toggleModal('modalPrivacidad')" class="footer-btn">Política de Privacidad</button>
+            <a href="https://ec.europa.eu/consumers/odr/" target="_blank" class="footer-btn" style="text-decoration: none;">Resolución de Litigios UE</a>
+        </div>
+        <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 2rem; margin-bottom: 1.5rem;">
+            <button onclick="toggleModal('modalReparacion')" class="footer-btn">Condiciones de Reparación</button>
+            <button onclick="toggleModal('modalVentaDetallada')" class="footer-btn">Condiciones de Venta</button>
+            <button onclick="toggleModal('modalCookies')" class="footer-btn">Cookies</button>
+        </div>
+    </div>
+
+<p style="text-align:center; margin-top:40px; font-size: 1rem; opacity: 0.8;">
+    <style>
+        .footer-link {
+            color: #ffffff !important;
+            text-decoration: none;
+            transition: color 0.3s ease, text-shadow 0.3s ease;
+        }
+        .footer-link:hover {
+            color: #ff3c00 !important;
+            text-shadow: 0 0 10px #ff3c00, 0 0 20px #ff3c00;
+        }
+    </style>
+    <a href="index.html" class="footer-link">© 2024 Bar El Candil.</a> Programado para Jose y Ana.
+</p>
+
+</footer>
+
+<div id="modalLegal" class="fixed inset-0 bg-black bg-opacity-90 z-[100000] hidden flex items-center justify-center p-4">
+    <div class="bg-white text-gray-800 max-w-4xl w-full rounded-3xl border-4 border-[#40E0D0] shadow-2xl overflow-hidden">
+        <div class="p-6 border-b flex justify-between items-center bg-gray-50 rounded-t-3xl">
+            <h2 class="font-crazy text-2xl text-[#40E0D0] uppercase">Aviso Legal</h2>
+            <button onclick="toggleModal('modalLegal')" class="text-gray-400 hover:text-black text-3xl transition">×</button>
+        </div>
+        
+        <div class="p-6 md:p-10 text-sm space-y-6 text-justify modal-content overflow-y-auto" style="max-height: 70vh;">
+            
+            <section>
+                <h3 class="font-bold text-gray-900 uppercase mb-2 border-b-2 border-[#FF00FF] inline-block">1. Datos Identificativos</h3>
+                <p class="mb-4">En cumplimiento con el artículo 10 de la Ley 34/2002, de 11 de julio, de Servicios de la Sociedad de la Información y del Comercio Electrónico (LSSI-CE), se facilitan los siguientes datos del titular del sitio web:</p>
+                
+                <div class="bg-gray-50 p-5 rounded-2xl border border-gray-200 space-y-2">
+                    <p><strong>Titular / Denominación Comercial:</strong> Bar El Candil (Jose y Ana)</p>
+                    <p><strong>NIF / CIF:</strong> ________________________</p>
+                    <p><strong>Domicilio Social:</strong> Calle la Vega 20, 24470 Páramo del Sil, León (España)</p>
+                    <p><strong>Email de contacto:</strong> ________________________</p>
+                    <p><strong>Teléfono de contacto:</strong> ________________________</p>
+                </div>
+            </section>
+
+            <section>
+                <h3 class="font-bold text-gray-900 uppercase mb-2 border-b-2 border-[#FF00FF] inline-block">2. Propiedad Intelectual e Industrial</h3>
+                <p>El titular es propietario de todos los derechos de propiedad intelectual e industrial de este sitio web, así como de los elementos contenidos en el mismo (a título enunciativo: imágenes, fotografías, audios, vídeos, marcas, logotipos, combinaciones de colores, textos, estructura y diseño arquitectónico de la web, etc.).</p>
+                <p>Queda expresamente prohibida la reproducción, distribución, comunicación pública o transformación de la totalidad o parte de los contenidos de esta página web con fines comerciales, en cualquier soporte y por cualquier medio técnico, sin la autorización previa y por escrito del titular del establecimiento.</p>
+            </section>
+
+            <section>
+                <h3 class="font-bold text-gray-900 uppercase mb-2 border-b-2 border-[#FF00FF] inline-block">3. Condiciones de Uso y Exclusión de Responsabilidad</h3>
+                <p>El acceso a este portal atribuye la condición de usuario, quien se compromete a hacer un uso adecuado de los contenidos de conformidad con la ley y las buenas costumbres. El titular del sitio web no se hace responsable, en ningún caso, de los daños y perjuicios de cualquier naturaleza que pudieran ocasionar errores u omisiones en los contenidos, la falta de disponibilidad temporal del portal o la transmisión involuntaria de elementos maliciosos o virus en los contenidos, a pesar de haber adoptado las medidas técnicas necesarias para evitarlo.</p>
+            </section>
+
+            <section>
+                <h3 class="font-bold text-gray-900 uppercase mb-2 border-b-2 border-[#FF00FF] inline-block">4. Enlaces a Terceros (Links)</h3>
+                <p>En el caso de que en la página web se incluyan hipervínculos o enlaces hacia otros sitios de Internet (como mapas interactivos de localización o plataformas de resolución de litigios), el titular de Bar El Candil no ejercerá ningún tipo de control sobre dichos sitios ni asumirá responsabilidad alguna por los contenidos, políticas de privacidad o el uso tecnológico que realicen estos portales ajenos.</p>
+            </section>
+
+            <section>
+                <h3 class="font-bold text-gray-900 uppercase mb-2 border-b-2 border-[#FF00FF] inline-block">5. Legislación Aplicable y Jurisdicción</h3>
+                <p>La relación entre el titular del sitio web y el usuario se regirá por la normativa española vigente. Cualquier controversia sobre el uso de la web se someterá a los Juzgados y Tribunales competentes que correspondan conforme al domicilio del consumidor.</p>
+            </section>
+
+        </div>
+        
+        <div class="p-4 text-center border-t bg-gray-50 rounded-b-3xl">
+            <button onclick="toggleModal('modalLegal')" class="bg-black text-white px-10 py-2 rounded-full font-bold uppercase text-xs hover:bg-[#40E0D0] transition-all shadow-lg">Cerrar</button>
+        </div>
+    </div>
+</div>
+
+<div id="modalPrivacidad" class="fixed inset-0 bg-black bg-opacity-90 z-[100000] hidden flex items-center justify-center p-4">
+    <div class="bg-white text-gray-800 max-w-4xl w-full rounded-3xl border-4 border-[#FF00FF] shadow-2xl overflow-hidden">
+        <div class="p-6 border-b flex justify-between items-center bg-gray-50 rounded-t-3xl">
+            <h2 class="font-crazy text-2xl text-[#FF00FF] uppercase">Política de Privacidad</h2>
+            <button onclick="toggleModal('modalPrivacidad')" class="text-gray-400 hover:text-black text-3xl transition">&times;</button>
+        </div>
+        
+        <div class="p-6 md:p-10 text-sm space-y-6 text-justify modal-content overflow-y-auto" style="max-height: 70vh;">
+            
+            <div class="bg-gray-50 border-2 border-gray-200 rounded-xl overflow-hidden mb-8">
+                <div class="bg-gray-200 p-2 font-bold text-center uppercase text-xs tracking-widest">Información Básica sobre Protección de Datos</div>
+                <table class="w-full text-xs">
+                    <tr class="border-b border-gray-200">
+                        <td class="p-3 font-bold bg-gray-100 w-1/3">Responsable</td>
+                        <td class="p-3">CRAZY BUSINESS S.L.</td>
+                    </tr>
+                    <tr class="border-b border-gray-200">
+                        <td class="p-3 font-bold bg-gray-100">Finalidad</td>
+                        <td class="p-3">Gestión de servicios de taller, venta de productos y envío de comunicaciones comerciales.</td>
+                    </tr>
+                    <tr class="border-b border-gray-200">
+                        <td class="p-3 font-bold bg-gray-100">Legitimación</td>
+                        <td class="p-3">Ejecución de contrato (servicios) y Consentimiento del interesado (publicidad).</td>
+                    </tr>
+                    <tr class="border-b border-gray-200">
+                        <td class="p-3 font-bold bg-gray-100">Destinatarios</td>
+                        <td class="p-3">No se ceden datos a terceros, salvo obligación legal o proveedores de transporte.</td>
+                    </tr>
+                    <tr>
+                        <td class="p-3 font-bold bg-gray-100">Derechos</td>
+                        <td class="p-3">Acceso, rectificación, supresión y otros derechos explicados en la información adicional.</td>
+                    </tr>
+                </table>
             </div>
-            <div class="map-container">
-                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d93742.2645955401!2d-6.4930372499999995!3d42.75777694999999!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd30cd006ba87b9f%3A0x60d63e15d3190436!2sEl%20candil!5e0!3m2!1ses!2ses!4v1778864750012!5m2!1ses!2ses" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+
+            <section>
+                <h3 class="font-bold text-gray-900 uppercase mb-2 border-b-2 border-[#40E0D0] inline-block">1. Contacto para Privacidad</h3>
+                <p>Para cualquier cuestión relacionada con el tratamiento de sus datos personales o para ejercer sus derechos, puede contactar directamente con nuestro responsable de privacidad a través del correo electrónico: <strong>anonimonaranja@gmail.com</strong>.</p>
+            </section>
+
+            <section>
+                <h3 class="font-bold text-gray-900 uppercase mb-2 border-b-2 border-[#40E0D0] inline-block">2. Bases Legítimas del Tratamiento</h3>
+                <p>Tratamos sus datos bajo dos fundamentos legales distintos dependiendo de la interacción:</p>
+                <ul class="list-disc ml-5 mt-2 space-y-2">
+                    <li><strong>Ejecución de Contrato:</strong> Para la gestión de reparaciones, pedidos y facturación, es obligatorio que nos facilite su <strong>nombre, apellidos, teléfono y dirección completa</strong>. Sin estos datos, no podríamos prestarle el servicio solicitado.</li>
+                    <li><strong>Interés Legítimo y Consentimiento:</strong> Para el envío de ofertas personalizadas, newsletters o el análisis de uso de la web, solicitaremos su consentimiento previo. El resto de datos no obligatorios se tratarán bajo esta base.</li>
+                </ul>
+            </section>
+
+            <section>
+                <h3 class="font-bold text-gray-900 uppercase mb-2 border-b-2 border-[#40E0D0] inline-block">3. Conservación de Datos</h3>
+                <p>Los datos personales proporcionados para la ejecución del contrato se conservarán mientras se mantenga la relación comercial y, posteriormente, durante los plazos exigidos por la legislación fiscal y civil para la atención de posibles responsabilidades.</p>
+            </section>
+
+            <section>
+                <h3 class="font-bold text-gray-900 uppercase mb-2 border-b-2 border-[#40E0D0] inline-block">4. Derechos del Interesado</h3>
+                <p>Usted tiene derecho a obtener confirmación sobre si estamos tratando sus datos. Puede ejercer sus derechos de acceso, rectificación, supresión, limitación y portabilidad enviando un e-mail a la dirección arriba indicada acompañando copia de su DNI.</p>
+            </section>
+
+        </div>
+        
+        <div class="p-4 text-center border-t bg-gray-50 rounded-b-3xl">
+            <button onclick="toggleModal('modalPrivacidad')" class="bg-black text-white px-10 py-2 rounded-full font-bold uppercase text-xs hover:bg-[#FF00FF] transition-all shadow-lg">Entendido</button>
+        </div>
+    </div>
+</div>
+
+<div id="modalReparacion" class="fixed inset-0 bg-black bg-opacity-90 z-[100000] hidden flex items-center justify-center p-4">
+    <div class="bg-white text-gray-800 max-w-5xl w-full rounded-3xl border-4 border-[#40E0D0] shadow-2xl overflow-hidden">
+        <div class="p-6 border-b flex justify-between items-center bg-gray-50 rounded-t-3xl">
+            <h2 class="font-crazy text-2xl text-[#40E0D0] uppercase">Condiciones de Taller y Reparación</h2>
+            <button onclick="toggleModal('modalReparacion')" class="text-gray-400 hover:text-black text-3xl transition">&times;</button>
+        </div>
+        
+        <div class="p-6 md:p-10 text-sm space-y-6 text-justify modal-content overflow-y-auto" style="max-height: 75vh;">
+            
+            <section>
+                <h3 class="font-bold text-gray-900 uppercase mb-2 border-b-2 border-[#FF00FF] inline-block">1. Aplicación y Resguardo de Depósito</h3>
+                <p>Estas condiciones regulan los servicios de chapa, pintura y mecánica prestados por <strong>CRAZY BUSINESS S.L.</strong> (CIF B22801138) en nuestro centro de Serranillos del Valle. La entrega del vehículo implica la aceptación de estas condiciones y la firma del Resguardo de Depósito/Orden de Trabajo.</p>
+            </section>
+
+            <section>
+                <h3 class="font-bold text-gray-900 uppercase mb-2 border-b-2 border-[#FF00FF] inline-block">2. Presupuestos y Diagnóstico</h3>
+                <p>Las estimaciones iniciales se basan en la información del cliente. Si al desmontar el vehículo (especialmente en trabajos de chapa tras un siniestro) aparecen daños ocultos, se informará al cliente y solo se procederá tras su aceptación del nuevo presupuesto. Los presupuestos tienen una validez de 12 días hábiles.</p>
+            </section>
+
+            <section>
+                <h3 class="font-bold text-gray-900 uppercase mb-2 border-b-2 border-[#FF00FF] inline-block">3. Custodia y Abandono</h3>
+                <p>El depósito del vehículo está incluido en el precio de reparación. Una vez terminada la reparación y avisado el cliente, este dispone de <strong>3 días hábiles</strong> para recoger el coche. A partir del cuarto día, se devengarán gastos de estancia y custodia según las tarifas vigentes del taller.</p>
+                <p class="text-red-600 font-bold">Importante: Crazy Cars Garage no se hace responsable de objetos personales dejados en el interior del vehículo.</p>
+            </section>
+
+            <section>
+                <h3 class="font-bold text-gray-900 uppercase mb-2 border-b-2 border-[#FF00FF] inline-block">4. Garantía de Reparación</h3>
+                <p>Todas nuestras reparaciones están garantizadas por <strong>3 meses o 2.000 kilómetros</strong> (lo que antes suceda), conforme al R.D. 1457/1986. Las piezas nuevas instaladas cuentan con la garantía legal de 3 años otorgada por el fabricante. La garantía se anula si el vehículo es manipulado por terceros tras nuestra intervención.</p>
+            </section>
+
+            <section>
+                <h3 class="font-bold text-gray-900 uppercase mb-2 border-b-2 border-[#FF00FF] inline-block">5. Piezas de Repuesto</h3>
+                <p>El cliente tiene derecho a recuperar las piezas sustituidas siempre que lo solicite al depositar el vehículo. En caso contrario, Crazy Cars Garage procederá a su gestión como residuo según la normativa medioambiental. Nos reservamos el derecho de no instalar piezas aportadas por el cliente si estas comprometen la seguridad vial.</p>
+            </section>
+
+            <section>
+                <h3 class="font-bold text-gray-900 uppercase mb-2 border-b-2 border-[#FF00FF] inline-block">6. Pruebas y Seguro</h3>
+                <p>Al firmar el resguardo, el cliente autoriza a realizar las pruebas en carretera necesarias para verificar la reparación. El cliente declara que el vehículo dispone de Seguro de Responsabilidad Civil obligatorio en vigor.</p>
+            </section>
+
+            <section>
+                <h3 class="font-bold text-gray-900 uppercase mb-2 border-b-2 border-[#FF00FF] inline-block">7. Pago y Retención</h3>
+                <p>El pago se realizará mediante tarjeta, efectivo (dentro de los límites legales) o transferencia antes de retirar el vehículo. Conforme al Art. 1.780 del Código Civil, el taller podrá retener el vehículo hasta que la factura sea abonada íntegramente.</p>
+            </section>
+
+            <section class="bg-gray-100 p-4 rounded-lg border-l-4 border-[#40E0D0]">
+                <p class="text-[10px] text-gray-500 uppercase">
+                    Crazy Business S.L. | Calle Los Cerezos 32, 28979 Serranillos del Valle (Madrid).<br>
+                    Contacto: anonimonaranja@gmail.com | Tel: +34 652 74 81 75
+                </p>
+            </section>
+        </div>
+        
+        <div class="p-4 text-center border-t bg-gray-50 rounded-b-3xl">
+            <button onclick="toggleModal('modalReparacion')" class="bg-black text-white px-10 py-2 rounded-full font-bold uppercase text-xs hover:bg-[#40E0D0] transition-all shadow-lg">Cerrar</button>
+        </div>
+    </div>
+</div>
+
+<div id="modalVentaDetallada" class="fixed inset-0 bg-black bg-opacity-90 z-[100000] hidden flex items-center justify-center p-4">
+    <div class="bg-white text-gray-800 max-w-5xl w-full rounded-3xl border-4 border-[#FF00FF] shadow-2xl overflow-hidden">
+        <div class="p-6 border-b flex justify-between items-center bg-gray-50 rounded-t-3xl">
+            <h2 class="font-crazy text-2xl text-[#FF00FF] uppercase">Condiciones Generales de Venta</h2>
+            <button onclick="toggleModal('modalVentaDetallada')" class="text-gray-400 hover:text-black text-3xl transition">&times;</button>
+        </div>
+        
+        <div class="p-6 md:p-10 text-sm space-y-6 text-justify modal-content overflow-y-auto" style="max-height: 75vh;">
+            
+            <p class="italic text-gray-600">Las presentes condiciones se aplican a las ventas realizadas por <strong>CRAZY BUSINESS S.L.</strong>, con CIF B22801138 y domicilio en Calle Los Cerezos 32, 28979 Serranillos del Valle (Madrid), a través de esta página web.</p>
+
+            <section>
+                <h3 class="font-bold text-gray-900 uppercase mb-2 border-b-2 border-[#40E0D0] inline-block">1. Proceso de Pedido</h3>
+                <p>Para adquirir nuestras pistolas, barnices o pinturas, el cliente deberá añadir los productos a la "cesta". Es necesario registrarse con datos reales (nombre, dirección de envío y contacto). La venta se considerará definitiva una vez enviado el correo de confirmación y recibido el pago íntegro.</p>
+            </section>
+
+            <section>
+                <h3 class="font-bold text-gray-900 uppercase mb-2 border-b-2 border-[#40E0D0] inline-block">2. Productos y Stock</h3>
+                <p>Nuestros productos de pintura y barnices están sujetos a disponibilidad de stock. En caso de rotura de stock de un barniz o resina específica, contactaremos con el cliente para ofrecer una alternativa de similar calidad o el reembolso total. <strong>Nota importante:</strong> Es responsabilidad del cliente verificar la compatibilidad química de las pinturas y barnices con la superficie a tratar.</p>
+            </section>
+
+            <section>
+                <h3 class="font-bold text-gray-900 uppercase mb-2 border-b-2 border-[#40E0D0] inline-block">3. Tarifas y Pago</h3>
+                <p>Los precios se expresan en euros e incluyen IVA. Los gastos de envío se calcularán según el peso de los botes de pintura o equipos de pulverización. Crazy Business S.L. se reserva el derecho de modificar precios sin previo aviso, garantizando siempre el precio vigente en el momento de la validación del pedido.</p>
+            </section>
+
+            <section>
+                <h3 class="font-bold text-gray-900 uppercase mb-2 border-b-2 border-[#40E0D0] inline-block">4. Entrega de Materiales</h3>
+                <p>Realizamos envíos a toda la Península y Baleares. Debido a la naturaleza inflamable de algunas pinturas y barnices, el transporte se realiza cumpliendo la normativa vigente de mercancías. Si el producto llega con el precinto abierto o el envase dañado, el cliente debe hacerlo constar en el albarán del transportista.</p>
+            </section>
+
+            <section>
+                <h3 class="font-bold text-gray-900 uppercase mb-2 border-b-2 border-[#40E0D0] inline-block">5. Responsabilidad y Garantía</h3>
+                <p>Las pistolas de pintura cuentan con la garantía legal de 3 años. <strong>Exclusiones:</strong> No se aceptarán garantías por atascos debidos a una mala limpieza tras el uso, ni por mezclas de componentes químicos no recomendadas. Crazy Business S.L. no se hace responsable de los daños producidos por una aplicación incorrecta de los barnices o pinturas suministrados.</p>
+            </section>
+
+            <section>
+                <h3 class="font-bold text-gray-900 uppercase mb-2 border-b-2 border-[#40E0D0] inline-block">6. Derecho de Desistimiento</h3>
+                <p>El cliente dispone de 14 días naturales para devolver el producto. <strong>Excepción:</strong> No se admitirá la devolución de pinturas personalizadas (colores a medida) o botes de barniz cuyo precinto de seguridad haya sido abierto, por motivos de protección de la salud y calidad del producto.</p>
+            </section>
+
+            <section>
+                <h3 class="font-bold text-gray-900 uppercase mb-2 border-b-2 border-[#40E0D0] inline-block">7. Protección de Datos</h3>
+                <p>Sus datos serán tratados por Crazy Business S.L. para la gestión del pedido y envío. Puede ejercer sus derechos de acceso, rectificación o supresión enviando un correo a <strong>anonimonaranja@gmail.com</strong>.</p>
+            </section>
+
+            <section class="bg-gray-100 p-4 rounded-lg border-l-4 border-[#FF00FF]">
+                <p class="text-[10px] text-gray-500">
+                    Legislación aplicable: Reino de España. Jurisdicción: Juzgados y Tribunales del domicilio del consumidor.
+                </p>
+            </section>
+        </div>
+        
+        <div class="p-4 text-center border-t bg-gray-50 rounded-b-3xl">
+            <button onclick="toggleModal('modalVentaDetallada')" class="bg-black text-white px-10 py-2 rounded-full font-bold uppercase text-xs hover:bg-[#FF00FF] transition-all shadow-lg">Entendido, cerrar</button>
+        </div>
+    </div>
+</div>
+
+<div id="modalUso" class="fixed inset-0 bg-black bg-opacity-90 z-[100000] hidden flex items-center justify-center p-4">
+    <div class="bg-white text-gray-800 max-w-4xl w-full rounded-3xl border-4 border-[#40E0D0] shadow-2xl overflow-hidden">
+        <div class="p-6 border-b flex justify-between items-center bg-gray-50 rounded-t-3xl">
+            <h2 class="font-crazy text-2xl text-[#40E0D0] uppercase">Condiciones de Uso</h2>
+            <button onclick="toggleModal('modalUso')" class="text-gray-400 hover:text-black text-3xl transition">&times;</button>
+        </div>
+        
+        <div class="p-6 md:p-10 text-sm space-y-6 text-justify modal-content overflow-y-auto" style="max-height: 70vh;">
+            
+            <section>
+                <h3 class="font-bold text-gray-900 uppercase mb-2 border-b-2 border-[#FF00FF] inline-block">1. Obligaciones y Responsabilidad del Usuario</h3>
+                <p>El usuario se compromete a utilizar los servicios y contenidos del portal de forma diligente, correcta y lícita. Queda terminantemente prohibido:</p>
+                <ul class="list-disc ml-5 mt-2 space-y-1">
+                    <li>Utilizar los contenidos con fines o efectos contrarios a la ley, a la moral y a las buenas costumbres generalmente aceptadas.</li>
+                    <li>Reproducir, copiar o distribuir los servicios a menos que se cuente con la autorización expresa del titular.</li>
+                    <li>Vulnerar derechos de propiedad intelectual o industrial pertenecientes a CRAZY BUSINESS S.L. o a terceros.</li>
+                    <li>Emplear la información del portal para remitir publicidad, comunicaciones con fines de venta directa o cualquier otra clase de finalidad comercial no solicitada.</li>
+                </ul>
+                <p>El usuario responderá de los daños y perjuicios de toda naturaleza que la empresa pueda sufrir como consecuencia del incumplimiento de estas obligaciones.</p>
+            </section>
+
+            <section>
+                <h3 class="font-bold text-gray-900 uppercase mb-2 border-b-2 border-[#FF00FF] inline-block">2. Propiedad Intelectual sobre Comentarios y Opiniones</h3>
+                <p>Aquellos usuarios que envíen observaciones, opiniones o comentarios a través de los servicios habilitados en el portal autorizan a CRAZY BUSINESS S.L. para su reproducción, distribución, comunicación pública y transformación.</p>
+                <p>Esta autorización se entiende realizada:</p>
+                <ul class="list-disc ml-5 mt-2 space-y-1">
+                    <li>A título gratuito.</li>
+                    <li>Por todo el tiempo de protección de derechos de autor previsto legalmente.</li>
+                    <li>Sin limitación territorial.</li>
+                </ul>
+                <p>CRAZY BUSINESS S.L. se reserva el derecho de no publicar o retirar aquellos comentarios que resulten contrarios a la ley, la moral, el orden público o que atenten contra la dignidad de terceros.</p>
+            </section>
+
+            <section>
+                <h3 class="font-bold text-gray-900 uppercase mb-2 border-b-2 border-[#FF00FF] inline-block">3. Reserva de Derechos</h3>
+                <p>CRAZY BUSINESS S.L. se reserva la facultad de interrumpir el acceso al portal o excluir al usuario en caso de observar conductas contrarias a las reglas internas o que puedan perturbar el buen funcionamiento, imagen o prestigio de la marca.</p>
+            </section>
+
+        </div>
+        
+        <div class="p-4 text-center border-t bg-gray-50 rounded-b-3xl">
+            <button onclick="toggleModal('modalUso')" class="bg-black text-white px-10 py-2 rounded-full font-bold uppercase text-xs hover:bg-[#40E0D0] transition-all shadow-lg">Aceptar y cerrar</button>
+        </div>
+    </div>
+</div>
+
+<div id="cookie-law-banner" class="fixed bottom-0 left-0 w-full z-[9999] p-4 transform transition-translate duration-500">
+    <div class="max-w-4xl mx-auto bg-black border border-[#40E0D0]/30 rounded-2xl shadow-[0_0_30px_rgba(0,0,0,0.8)] p-6 md:p-8 backdrop-blur-md">
+        <div class="flex flex-col md:flex-row items-center justify-between gap-6">
+            <div class="text-center md:text-left">
+                <h3 class="text-[#40E0D0] font-marker text-xl mb-2">¿UNAS COOKIES RECIEN HORNEADAS DEL CANDIL?</h3>
+                <p class="text-gray-300 text-sm leading-relaxed">
+                    Utilizamos cookies para que tu experiencia en nuestra web sea de alta gama. Al continuar, aceptas que usemos estas herramientas para mejorar tu navegación. Puedes aceptar todas, rechazarlas o configurar tus preferencias.
+                </p>
+            </div>
+            <div class="flex flex-wrap justify-center gap-3 shrink-0">
+                <button onclick="toggleModal('modalCookies')" class="bg-transparent text-gray-300 border border-gray-500 px-5 py-3 rounded-xl font-bold uppercase text-xs hover:bg-gray-800 transition-all">
+                    CONFIGURAR
+                </button>
+                <button onclick="saveCookieChoice()" class="bg-transparent text-[#ff3c00] border border-[#ff3c00] px-5 py-3 rounded-xl font-bold uppercase text-xs hover:bg-[#ff3c00]/10 transition-all">
+                    RECHAZAR
+                </button>
+                <button onclick="saveCookieChoice()" class="bg-[#40E0D0] text-black px-6 py-3 rounded-xl font-bold uppercase text-xs hover:scale-105 transition-all shadow-[0_0_15px_rgba(64,224,208,0.4)]">
+                    ACEPTAR
+                </button>
             </div>
         </div>
-        <p style="text-align:center; margin-top:40px; font-size: 0.8rem; opacity: 0.5;">© 2024 Bar El Candil. Programado para Jose y Ana.</p>
-    </footer>
+    </div>
+</div>
+
+<div id="modalCookies" class="fixed inset-0 bg-black bg-opacity-90 z-[100000] hidden flex items-center justify-center p-4">
+    <div class="bg-white text-gray-800 max-w-2xl w-full rounded-3xl border-4 border-gray-400 shadow-2xl overflow-hidden">
+        <div class="p-6 md:p-10 text-sm space-y-6 text-justify modal-content">
+            <h2 class="font-bold uppercase text-xl border-b pb-2 text-gray-900">Política de Cookies - Bar El Candil</h2>
+            
+            <p>En <strong>Bar El Candil</strong> utilizamos cookies y tecnologías similares para garantizar el correcto funcionamiento de nuestra página web, recordar tus preferencias de navegación y, si nos das tu consentimiento, analizar el tráfico y la interacción con nuestro sitio para ofrecerte una experiencia de alta gama.</p>
+            
+            <h3 class="font-bold text-gray-900 uppercase text-xs mt-4">1. ¿Qué es una cookie?</h3>
+            <p>Una cookie es un pequeño archivo de texto que los sitios web almacenan en tu navegador, ordenador o dispositivo móvil. Sirven para que el sitio web sea capaz de recordar información sobre tu visita, como tu idioma preferido y otras opciones, lo que puede facilitar tu próxima visita y hacer que el sitio te resulte más útil.</p>
+
+            <h3 class="font-bold text-gray-900 uppercase text-xs mt-4">2. Tipos de cookies que utilizamos</h3>
+            <ul class="list-disc ml-5 space-y-2">
+                <li><strong>Cookies Técnicas (Necesarias):</strong> Son esenciales para permitirte navegar por nuestra web y utilizar sus funciones básicas (como guardar tu configuración de privacidad o recordar la aceptación de este panel). No se pueden desactivar ya que la web dejaría de funcionar correctamente.</li>
+                <li><strong>Cookies de Personalización o Preferencias:</strong> Permiten que el sitio web recuerde información que cambia el aspecto o el comportamiento de la página, ofreciéndote una experiencia más adaptada.</li>
+                <li><strong>Cookies de Análisis o Estadísticas (Opcionales):</strong> Tratadas por nosotros o por terceros (como Google Analytics), nos permiten cuantificar el número de usuarios y realizar la medición y análisis estadístico de la utilización que hacen los usuarios de nuestra web para introducir mejoras.</li>
+            </ul>
+
+            <h3 class="font-bold text-gray-900 uppercase text-xs mt-4">3. Enlaces a terceros</h3>
+            <p>Esta página web contiene enlaces a plataformas externas (como Google Maps para mostrar nuestra localización). Bar El Candil no tiene control ni se hace responsable de las políticas de privacidad ni del uso de cookies de estos terceros. Al interactuar con dichos mapas o enlaces, aceptas sus respectivas condiciones.</p>
+
+            <h3 class="font-bold text-gray-900 uppercase text-xs mt-4">4. Cómo configurar o revocar el consentimiento</h3>
+            <p>Puedes permitir, bloquear o eliminar las cookies instaladas en tu equipo en cualquier momento modificando los parámetros de configuración del navegador que utilices de forma habitual:</p>
+            <ul class="list-disc ml-5 space-y-1 text-xs text-gray-600">
+                <li><strong>Google Chrome:</strong> Configuración &gt; Privacidad y seguridad &gt; Cookies y otros datos de sitios.</li>
+                <li><strong>Mozilla Firefox:</strong> Ajustes &gt; Privacidad &gt; Historial &gt; Configuración Personalizada.</li>
+                <li><strong>Safari:</strong> Preferencias &gt; Privacidad &gt; Bloquear todas las cookies.</li>
+            </ul>
+        </div>
+        <div class="p-4 text-center border-t bg-gray-50 flex justify-center gap-3">
+            <button onclick="toggleModal('modalCookies')" class="bg-gray-200 text-gray-800 px-6 py-2 rounded-full font-bold uppercase text-xs hover:bg-gray-300 transition-all">
+                Cerrar
+            </button>
+            <button onclick="saveCookieChoice(); toggleModal('modalCookies');" class="bg-[#40E0D0] text-black px-8 py-2 rounded-full font-bold uppercase text-xs hover:scale-105 transition-all shadow-lg">
+                Aceptar y Guardar
+            </button>
+        </div>
+    </div>
+</div>
+
+<script>
+    function saveCookieChoice() {
+        const banner = document.getElementById('cookie-law-banner');
+        if (banner) {
+            banner.style.display = 'none';
+            localStorage.setItem('crazy_cookies_accepted', 'true');
+        }
+    }
+
+    (function checkCookies() {
+        const alreadyAccepted = localStorage.getItem('crazy_cookies_accepted');
+        const banner = document.getElementById('cookie-law-banner');
+        
+        if (alreadyAccepted === 'true' && banner) {
+            // Si ya se aceptó, eliminamos el banner antes de que se vea
+            banner.style.display = 'none';
+        }
+    })();
+
+    function toggleModal(id) {
+        const modal = document.getElementById(id);
+        if (modal) {
+            modal.classList.toggle('hidden');
+            if (!modal.classList.contains('hidden')) {
+                document.body.style.overflow = 'hidden';
+            } else {
+                document.body.style.overflow = 'auto';
+            }
+        }
+    }
+</script>
 
 </body>
 </html>
