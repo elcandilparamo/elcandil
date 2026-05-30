@@ -4,7 +4,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Nuestra Esencia | Bar El Candil</title>
-    <link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap" rel="stylesheet">
+
+    <meta name="author" content="ciberbross90">
+    <meta name="copyright" content="ciberbross90">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+
+
     <style>
         :root {
             --neon-color: #ff3c00; 
@@ -254,7 +264,7 @@
             margin-bottom: 15px;
         }
 
-.ruta-row {
+	.ruta-row {
             display: flex;
             align-items: center;
             gap: 30px;
@@ -339,6 +349,85 @@
             margin-bottom: 20px;
             text-shadow: var(--neon-glow-subtle);
         }
+        .modal-content {
+            max-height: 70vh;
+            overflow-y: auto;
+        }
+	#cookie-law-banner {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            z-index: 9999;
+        }
+	@keyframes bounce-slow {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .animate-bounce-slow {
+            animation: bounce-slow 3s infinite ease-in-out;
+        }
+/* Fuerza a ocultar los elementos con la clase hidden (necesario para los modales) */
+        .hidden {
+            display: none !important;
+        }
+/* --- ESTILOS PARA LOS MODALES DE PRIVACIDAD --- */
+        .hidden {
+            display: none !important;
+        }
+        
+        .modal-back {
+            position: fixed;
+            inset: 0;
+            background-color: rgba(0, 0, 0, 0.85);
+            z-index: 100000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .modal-box {
+            background-color: #ffffff;
+            color: #333333;
+            max-width: 600px;
+            width: 100%;
+            border-radius: 20px;
+            border: 3px solid #ff3c00;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+        }
+
+        .modal-header {
+            padding: 15px 20px;
+            border-bottom: 1px solid #eeeeee;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #f9f9f9;
+        }
+
+        .modal-body {
+            padding: 20px;
+            font-size: 0.8rem;
+            line-height: 1.5;
+            max-height: 60vh;
+            overflow-y: auto;
+            text-align: justify;
+            color: #444444;
+        }
+
+        .modal-footer {
+            padding: 15px 20px;
+            border-top: 1px solid #eeeeee;
+            background-color: #f9f9f9;
+            display: flex;
+            justify-content: flex-end;
+            gap: 10px;
+        }
     </style>
 </head>
 <body>
@@ -369,19 +458,28 @@
         
 <section class="ruta-row" style="display: flex; align-items: center; gap: 20px; margin-bottom: 30px;">
     <div class="ruta-mapa" style="flex: 1.5; min-width: 300px; height: 450px; border: 1px solid #333; border-radius: 10px; overflow: hidden; background: #000; position: relative;">
+        <div class="wikiloc-placeholder" style="position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 20px; background-color: rgba(10,10,10,0.96); z-index: 10;">
+            <p style="color: #ccc; font-size: 0.85rem; margin-bottom: 15px; max-width: 320px; font-family: 'Segoe UI', sans-serif; line-height: 1.4;">
+                Para visualizar el mapa interactivo de esta ruta en Wikiloc, acepta las cookies analíticas de terceros.
+            </p>
+            <button onclick="activateMapsDirectly()" style="background-color: #ff3c00; color: white; padding: 8px 18px; border: none; border-radius: 20px; font-weight: bold; cursor: pointer; text-transform: uppercase; font-size: 0.7rem; letter-spacing: 0.5px; transition: transform 0.2s;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
+                Activar Mapa de Ruta
+            </button>
+        </div>
         <iframe 
-            src="https://es.wikiloc.com/wikiloc/embedv2.do?id=20797477&elevation=on&images=on&maptype=H" 
+            class="wikiloc-iframe"
+            data-src="https://es.wikiloc.com/wikiloc/embedv2.do?id=20797477&elevation=on&images=on&maptype=H" 
             width="100%" 
             height="520" 
             frameborder="0" 
             scrolling="no" 
-            style="border: none; position: absolute; top: -55px; left: 0;">
+            style="border: none; position: absolute; top: -55px; left: 0; display: none;">
         </iframe>
     </div>
     <div class="ruta-info" style="flex: 1; min-width: 250px; padding: 10px;">
         <span class="tag-dificultad">Dificultad: Baja</span>
         <h3>Ruta de los Molinos</h3>
-	<p><strong>Inicio:</strong> El Candil - El Candil.</p>
+        <p><strong>Inicio:</strong> El Candil - El Candil.</p>
         <p><strong>Recorrido:</strong> La Ruta de los Molinos de Páramo del Sil es un sendero lineal y circular corto de baja dificultad, perfecto para realizar en familia o iniciarse en el senderismo. El recorrido sumerge al caminante en un frondoso bosque de ribera rodeado de castaños, nogales y robles.</p>
         <p>Paseo llano ideal para abrir el apetito antes de pasar por El Candil.</p>
         <div style="color:#777; font-size:11px; margin-top:15px;">
@@ -392,13 +490,22 @@
 
 <section class="ruta-row" style="display: flex; align-items: center; gap: 20px; margin-bottom: 30px;">
     <div class="ruta-mapa" style="flex: 1.5; min-width: 300px; height: 450px; border: 1px solid #333; border-radius: 10px; overflow: hidden; background: #000; position: relative;">
+        <div class="wikiloc-placeholder" style="position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 20px; background-color: rgba(10,10,10,0.96); z-index: 10;">
+            <p style="color: #ccc; font-size: 0.85rem; margin-bottom: 15px; max-width: 320px; font-family: 'Segoe UI', sans-serif; line-height: 1.4;">
+                Para visualizar el mapa interactivo de esta ruta en Wikiloc, acepta las cookies analíticas de terceros.
+            </p>
+            <button onclick="activateMapsDirectly()" style="background-color: #ff3c00; color: white; padding: 8px 18px; border: none; border-radius: 20px; font-weight: bold; cursor: pointer; text-transform: uppercase; font-size: 0.7rem; letter-spacing: 0.5px; transition: transform 0.2s;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
+                Activar Mapa de Ruta
+            </button>
+        </div>
         <iframe 
-            src="https://es.wikiloc.com/wikiloc/embedv2.do?id=5450714&elevation=on&images=on&maptype=H" 
+            class="wikiloc-iframe"
+            data-src="https://es.wikiloc.com/wikiloc/embedv2.do?id=5450714&elevation=on&images=on&maptype=H" 
             width="100%" 
             height="520" 
             frameborder="0" 
             scrolling="no" 
-            style="border: none; position: absolute; top: -55px; left: 0;">
+            style="border: none; position: absolute; top: -55px; left: 0; display: none;">
         </iframe>
     </div>
     <div class="ruta-info" style="flex: 1; min-width: 250px; padding: 10px;">
@@ -414,13 +521,22 @@
 
 <section class="ruta-row" style="display: flex; align-items: center; gap: 20px; margin-bottom: 30px;">
     <div class="ruta-mapa" style="flex: 1.5; min-width: 300px; height: 450px; border: 1px solid #333; border-radius: 10px; overflow: hidden; background: #000; position: relative;">
+        <div class="wikiloc-placeholder" style="position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 20px; background-color: rgba(10,10,10,0.96); z-index: 10;">
+            <p style="color: #ccc; font-size: 0.85rem; margin-bottom: 15px; max-width: 320px; font-family: 'Segoe UI', sans-serif; line-height: 1.4;">
+                Para visualizar el mapa interactivo de esta ruta en Wikiloc, acepta las cookies analíticas de terceros.
+            </p>
+            <button onclick="activateMapsDirectly()" style="background-color: #ff3c00; color: white; padding: 8px 18px; border: none; border-radius: 20px; font-weight: bold; cursor: pointer; text-transform: uppercase; font-size: 0.7rem; letter-spacing: 0.5px; transition: transform 0.2s;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
+                Activar Mapa de Ruta
+            </button>
+        </div>
         <iframe 
-            src="https://es.wikiloc.com/wikiloc/embedv2.do?id=18470132&elevation=on&images=on&maptype=H" 
+            class="wikiloc-iframe"
+            data-src="https://es.wikiloc.com/wikiloc/embedv2.do?id=18470132&elevation=on&images=on&maptype=H" 
             width="100%" 
             height="520" 
             frameborder="0" 
             scrolling="no" 
-            style="border: none; position: absolute; top: -55px; left: 0;">
+            style="border: none; position: absolute; top: -55px; left: 0; display: none;">
         </iframe>
     </div>
     <div class="ruta-info" style="flex: 1; min-width: 250px; padding: 10px;">
@@ -436,19 +552,28 @@
 
 <section class="ruta-row" style="display: flex; align-items: center; gap: 20px; margin-bottom: 30px;">
     <div class="ruta-mapa" style="flex: 1.5; min-width: 300px; height: 450px; border: 1px solid #333; border-radius: 10px; overflow: hidden; background: #000; position: relative;">
+        <div class="wikiloc-placeholder" style="position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 20px; background-color: rgba(10,10,10,0.96); z-index: 10;">
+            <p style="color: #ccc; font-size: 0.85rem; margin-bottom: 15px; max-width: 320px; font-family: 'Segoe UI', sans-serif; line-height: 1.4;">
+                Para visualizar el mapa interactivo de esta ruta en Wikiloc, acepta las cookies analíticas de terceros.
+            </p>
+            <button onclick="activateMapsDirectly()" style="background-color: #ff3c00; color: white; padding: 8px 18px; border: none; border-radius: 20px; font-weight: bold; cursor: pointer; text-transform: uppercase; font-size: 0.7rem; letter-spacing: 0.5px; transition: transform 0.2s;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
+                Activar Mapa de Ruta
+            </button>
+        </div>
         <iframe 
-            src="https://es.wikiloc.com/wikiloc/embedv2.do?id=19721876&elevation=on&images=on&maptype=H" 
+            class="wikiloc-iframe"
+            data-src="https://es.wikiloc.com/wikiloc/embedv2.do?id=19721876&elevation=on&images=on&maptype=H" 
             width="100%" 
             height="520" 
             frameborder="0" 
             scrolling="no" 
-            style="border: none; position: absolute; top: -55px; left: 0;">
+            style="border: none; position: absolute; top: -55px; left: 0; display: none;">
         </iframe>
     </div>
     <div class="ruta-info" style="flex: 1; min-width: 250px; padding: 10px;">
         <span class="tag-dificultad">Dificultad: Alta | Montañismo</span>
         <h3>Subida Pico el Miro | Lago Cheiroso</h3>
-	<p><strong>Inicio:</strong> Valdeprado (Cerca de Paramo).</p>
+        <p><strong>Inicio:</strong> Valdeprado (Cerca de Paramo).</p>
         <p><strong>Recorrido:</strong> Una de las ascensiones más espectaculares del Alto Sil (1.990 m). Ofrece vistas panorámicas impresionantes hacia Asturias, el Valle de Fornela y las cimas de Ancares.</p>
         <p>Un entorno salvaje que guarda la esencia más pura de la montaña berciana.</p>
         <div style="color:#777; font-size:11px; margin-top:15px;">
@@ -459,19 +584,28 @@
 
 <section class="ruta-row" style="display: flex; align-items: center; gap: 20px; margin-bottom: 30px;">
     <div class="ruta-mapa" style="flex: 1.5; min-width: 300px; height: 450px; border: 1px solid #333; border-radius: 10px; overflow: hidden; background: #000; position: relative;">
+        <div class="wikiloc-placeholder" style="position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 20px; background-color: rgba(10,10,10,0.96); z-index: 10;">
+            <p style="color: #ccc; font-size: 0.85rem; margin-bottom: 15px; max-width: 320px; font-family: 'Segoe UI', sans-serif; line-height: 1.4;">
+                Para visualizar el mapa interactivo de esta ruta en Wikiloc, acepta las cookies analíticas de terceros.
+            </p>
+            <button onclick="activateMapsDirectly()" style="background-color: #ff3c00; color: white; padding: 8px 18px; border: none; border-radius: 20px; font-weight: bold; cursor: pointer; text-transform: uppercase; font-size: 0.7rem; letter-spacing: 0.5px; transition: transform 0.2s;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
+                Activar Mapa de Ruta
+            </button>
+        </div>
         <iframe 
-            src="https://es.wikiloc.com/wikiloc/embedv2.do?id=9345458&elevation=on&images=on&maptype=H" 
+            class="wikiloc-iframe"
+            data-src="https://es.wikiloc.com/wikiloc/embedv2.do?id=9345458&elevation=on&images=on&maptype=H" 
             width="100%" 
             height="520" 
             frameborder="0" 
             scrolling="no" 
-            style="border: none; position: absolute; top: -55px; left: 0;">
+            style="border: none; position: absolute; top: -55px; left: 0; display: none;">
         </iframe>
     </div>
     <div class="ruta-info" style="flex: 1; min-width: 250px; padding: 10px;">
         <span class="tag-dificultad">Interés Cultural y Paisajístico</span>
         <h3>Pardamaza - Primout</h3>
-	<p><strong>Inicio:</strong> Pardamaza (Cerca de Paramo).</p>
+        <p><strong>Inicio:</strong> Pardamaza (Cerca de Paramo).</p>
         <p><strong>Recorrido:</strong> Un itinerario mágico que conecta Pardamaza con la aldea de Primout a la vera del río. Discurre entre bosques de ribera tapizados de musgo en un entorno de aislamiento absoluto.</p>
         <p>Primout es una joya tradicional que mantiene intacta su atmósfera de paz y desconexión total.</p>
         <div style="color:#777; font-size:11px; margin-top:15px;">
@@ -485,22 +619,487 @@
         </p>
     </div>
 
-    <footer id="ubicacion">
-        <div class="footer-container">
-            <div class="contact-info">
-                <h3>Contacto</h3>
-                <p>📍 Calle la Vega 20</p>
-                <p>24470 Páramo del Sil, León</p>
-                <br>
-                <p><strong>Ubicación privilegiada:</strong></p>
-                <p>Justo delante del Parque Infantil Álvarez Carballo.</p>
+<footer class="bg-gray-900 text-white pt-10 pb-6 border-t-4 border-[##ff3c00]" id="ubicacion">
+    <div class="footer-container">
+        <div class="contact-info" style="text-align: center;">
+            <h3>Contacto</h3>
+            <p>📍 Calle la Vega 20</p>
+            <p>24470 Páramo del Sil, León</p>
+            <p>Telefono: 639212610</p>
+	    <p>Email: <a href="mailto:elcandilparamodelsil@gmail.com" class="footer-link">elcandilparamodelsil@gmail.com</a></p>
+            
+	    <div style="margin: 20px 0; display: flex; justify-content: center; align-items: center; gap: 12px;">
+                <a href="https://www.facebook.com/share/18XBXVSbAK/?mibextid=wwXlfr" target="_blank" class="footer-link" style="text-decoration: none; display: flex; align-items: center; gap: 12px;" title="Síguenos en Facebook">
+                    <span style="text-align: right; font-size: 0.9rem; line-height: 1.2; font-weight: bold; display: inline-block;">
+                        Mantente al día<br>de nuestros eventos
+                    </span>
+                    <span style="background-color: #1877F2; width: 42px; height: 42px; display: flex; align-items: center; justify-content: center; border-radius: 50%; transition: transform 0.3s ease;">
+                        <i class="fa-brands fa-facebook-f" style="font-size: 1.5rem; color: #ffffff;"></i>
+                    </span>
+                </a>
             </div>
-            <div class="map-container">
-                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d93742.2645955401!2d-6.4930372499999995!3d42.75777694999999!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd30cd006ba87b9f%3A0x60d63e15d3190436!2sEl%20candil!5e0!3m2!1ses!2ses!4v1778864750012!5m2!1ses!2ses" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+
+            <p><strong>Ubicación privilegiada:</strong></p>
+            <p>Justo delante del Parque Infantil Álvarez Carballo.</p>
+        </div>
+    	<div class="map-container" id="map-wrapper" style="display: flex; justify-content: center; width: 100%; max-width: 600px; height: 300px; margin: 0 auto;">
+		<div id="map-placeholder" style="width: 100%; height: 100%; background: #111; border: 1px dashed #ff3c00; border-radius: 10px; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 20px; text-align: center;">
+        <i class="fa-solid fa-map-location-dot" style="color: #ff3c00; font-size: 3rem; margin-bottom: 15px;"></i>
+        <h4 style="color: white; font-weight: bold; margin-bottom: 10px; uppercase">Mapa Desactivado</h4>
+        <p style="color: #ccc; font-size: 12px; max-width: 350px; margin-bottom: 15px;">
+            Para visualizar el mapa interactivo de Google Maps, es necesario aceptar las cookies analíticas y de terceros.
+        </p>
+        <button onclick="acceptAllCookies()" class="footer-btn" style="background: #ff3c00; padding: 8px 20px; rounded-radius: 20px; border-radius: 20px; font-size: 11px !important;">
+            Activar Mapa y Cookies
+        </button>
+		</div>
+	<iframe id="google-map" data-src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2932.128717865664!2d-6.4913214!3d42.7019958!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd30ae31d36be4ad%3A0xe5f928e19cbe34!2sC.%20la%20Vega%2C%2020%2C%2024470%20P%C3%A1ramo%20del%20Sil%2C%20Le%C3%B3n!5e0!3m2!1ses!2ses!4v1710000000000!5m2!1ses!2ses" width="600" height="300" style="border:0; display: none; border-radius: 10px;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+	</div>
+    </div>
+
+    <style>
+        .footer-btn {
+            color: #ffffff !important; /* Texto blanco */
+            font-size: 12px !important;  /* Un 20% más grande que el 10px original */
+            background: none;
+            border: none;
+            cursor: pointer;
+            text-transform: uppercase;
+            font-weight: bold;
+            transition: color 0.3s ease, text-shadow 0.3s ease;
+        }
+        /* Efecto al pasar el cursor: cambia al rojo-naranja neón de la página */
+        .footer-btn:hover {
+            color: #ff3c00 !important;
+            text-shadow: 0 0 10px #ff3c00, 0 0 20px #ff3c00;
+        }
+    </style>
+
+    <div style="text-align: center; margin-top: 3rem; padding-top: 1.5rem; border-top: 1px solid #222;">
+        <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 2rem; margin-bottom: 1rem;">
+            <button onclick="toggleModal('modalLegal')" class="footer-btn">Aviso Legal</button>
+            <button onclick="toggleModal('modalUso')" class="footer-btn">Condiciones de Uso</button>
+            <button onclick="toggleModal('modalCookies')" class="footer-btn">Cookies</button>
+        </div>
+        <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 2rem; margin-bottom: 1.5rem;">
+            <button onclick="toggleModal('modalPrivacidad')" class="footer-btn">Política de Privacidad</button>
+            <a href="https://ec.europa.eu/consumers/odr/" target="_blank" class="footer-btn" style="text-decoration: none;">Resolución de Litigios UE</a>
+        </div>
+    </div>
+
+<p style="text-align:center; margin-top:40px; font-size: 1rem; opacity: 0.8;">
+    <style>
+        .footer-link {
+            color: #ffffff !important;
+            text-decoration: none;
+            transition: color 0.3s ease, text-shadow 0.3s ease;
+        }
+        .footer-link:hover {
+            color: #ff3c00 !important;
+            text-shadow: 0 0 10px #ff3c00, 0 0 20px #ff3c00;
+        }
+    </style>
+	<p style="text-align:center; margin-top:40px; font-size: 1rem; opacity: 0.8;">
+	    <a href="index.html" class="footer-link">© 2024 Bar El Candil.</a></p>
+	<p style="text-align:center; margin-top:4px; font-size: 1rem; opacity: 0.8;">
+	    Programado para Jose y Ana.</p>
+
+</footer>
+
+<div id="modalLegal" class="fixed inset-0 bg-black bg-opacity-90 z-[100000] hidden flex items-center justify-center p-4">
+    <div class="bg-white text-gray-800 max-w-4xl w-full rounded-3xl border-4 border-[#ff3c00] shadow-2xl overflow-hidden">
+        <div class="p-4 border-b flex justify-between items-center bg-gray-50 rounded-t-3xl">
+            <h2 class="font-crazy text-xl text-[#ff3c00] uppercase font-bold">Aviso Legal</h2>
+            <button onclick="toggleModal('modalLegal')" class="text-gray-400 hover:text-black text-2xl transition">×</button>
+        </div>
+        
+        <div class="p-6 md:p-8 text-xs space-y-3 text-justify modal-content overflow-y-auto" style="max-height: 65vh;">
+            <div>
+                <h3 class="font-bold text-gray-900 uppercase border-b border-[#ff3c00] inline-block mb-1">1. Datos Identificativos</h3>
+                <p>En cumplimiento con el artículo 10 de la Ley 34/2002, de 11 de julio, de Servicios de la Sociedad de la Información y del Comercio Electrónico (LSSI-CE), se facilitan los siguientes datos del titular del sitio web:</p>
+                <div class="bg-gray-50 p-3 rounded-xl border border-gray-200 mt-1 space-y-0.5">
+                    <p><strong>Titular / Denominación Comercial:</strong> Bar El Candil</p>
+                    <p><strong>NIF:</strong>71523831H</p>
+                    <p><strong>Domicilio Social:</strong> Calle la Vega 20, 24470 Páramo del Sil, León (España)</p>
+                    <p><strong>Email de contacto:</strong> elcandilparamodelsil@gmail.com</p>
+                    <p><strong>Teléfono de contacto:</strong> 639212610</p>
+                </div>
+            </div>
+
+            <div>
+                <h3 class="font-bold text-gray-900 uppercase border-b border-[#ff3c00] inline-block mb-1">2. Propiedad Intelectual e Industrial</h3>
+                <p>El titular <strong>Bar El Candil,</strong>es propietario de todos los derechos de propiedad intelectual e industrial de este sitio web, así como de los elementos contenidos en el mismo (imágenes, fotografías, logotipos, textos, estructura y diseño arquitectónico de la web, etc.). Queda expresamente prohibida la reproducción, distribución o modificación de la totalidad o parte de los contenidos de esta página con fines comerciales sin autorización previa.</p>
+            </div>
+
+            <div>
+                <h3 class="font-bold text-gray-900 uppercase border-b border-[#ff3c00] inline-block mb-1">3. Condiciones de Uso y Exclusión de Responsabilidad</h3>
+                <p>El acceso a este portal atribuye la condición de usuario, quien se compromete a hacer un uso adecuado de los contenidos de conformidad con la ley. El titular no se hace responsable de los daños y perjuicios que pudieran ocasionar errores u omisiones en los contenidos, o la falta de disponibilidad temporal del portal por mantenimientos técnicos.</p>
+            </div>
+
+            <div>
+                <h3 class="font-bold text-gray-900 uppercase border-b border-[#ff3c00] inline-block mb-1">4. Enlaces a Terceros (Links)</h3>
+                <p>En el caso de que se incluyan enlaces hacia otros sitios de Internet (como mapas interactivos de Google Maps o plataformas oficiales de la UE), Bar El Candil no ejercerá ningún tipo de control sobre dichos sitios ni asumirá responsabilidad alguna por sus contenidos o políticas de privacidad.</p>
+            </div>
+
+            <div>
+                <h3 class="font-bold text-gray-900 uppercase border-b border-[#ff3c00] inline-block mb-1">5. Legislación Aplicable y Jurisdicción</h3>
+                <p>La relación entre el titular del sitio web y el usuario se regirá por la normativa española vigente. Para la resolución de cualquier controversia, conflicto o reclamación que pudiera surgir en relación con el uso de este sitio web, ambas partes acuerdan someterse expresamente a la jurisdicción de los <strong>Juzgados y Tribunales de Ponferrada (León)</strong>, por ser el partido judicial que le compete territorialmente al municipio de Páramo del Sil, renunciando a cualquier otro fuero que pudiera corresponderles.</p>
             </div>
         </div>
-        <p style="text-align:center; margin-top:40px; font-size: 0.8rem; opacity: 0.5;">© 2024 Bar El Candil. Programado para Jose y Ana.</p>
-    </footer>
+        
+        <div class="p-3 text-center border-t bg-gray-50 rounded-b-3xl">
+            <button onclick="toggleModal('modalLegal')" class="bg-black text-white px-8 py-1.5 rounded-full font-bold uppercase text-xs hover:bg-[#ff3c00] transition-all shadow-lg">Cerrar</button>
+        </div>
+    </div>
+</div>
+
+<div id="modalUso" class="fixed inset-0 bg-black bg-opacity-90 z-[100000] hidden flex items-center justify-center p-4">
+    <div class="bg-white text-gray-800 max-w-4xl w-full rounded-3xl border-4 border-[#ff3c00] shadow-2xl overflow-hidden">
+        <div class="p-4 border-b flex justify-between items-center bg-gray-50 rounded-t-3xl">
+            <h2 class="font-crazy text-xl text-[#ff3c00] uppercase font-bold">Condiciones de Uso</h2>
+            <button onclick="toggleModal('modalUso')" class="text-gray-400 hover:text-black text-2xl transition">×</button>
+        </div>
+        
+        <div class="p-6 md:p-8 text-xs space-y-3 text-justify modal-content overflow-y-auto" style="max-height: 65vh;">
+            <div>
+                <h3 class="font-bold text-gray-900 uppercase border-b border-[#ff3c00] inline-block mb-1">1. Objeto y Ámbito de Aplicación</h3>
+                <p>Las presentes condiciones regulan el acceso y uso de la web oficial de <strong>Bar El Candil</strong>. Al navegar por este sitio, el usuario acepta de manera íntegra estas disposiciones, orientadas a informar sobre los servicios, localización y esencia de nuestro establecimiento en Páramo del Sil.</p>
+            </div>
+
+            <div>
+                <h3 class="font-bold text-gray-900 uppercase border-b border-[#ff3c00] inline-block mb-1">2. Obligaciones del Usuario</h3>
+                <p>El usuario se compromete a hacer un uso lícito y responsable de los contenidos expuestos en este portal. Queda prohibido utilizar la información de contacto para el envío de publicidad no solicitada (SPAM), dañar la infraestructura tecnológica de la web o reproducir imágenes de nuestras instalaciones sin autorización por escrito.</p>
+            </div>
+
+            <div>
+                <h3 class="font-bold text-gray-900 uppercase border-b border-[#ff3c00] inline-block mb-1">3. Responsabilidad por Contenidos y Terceros</h3>
+                <p><strong>Bar El Candil</strong> realiza los máximos esfuerzos para garantizar que la información de la web sea correcta. No obstante, no nos responsabilizamos de interrupciones puntuales del servicio por mantenimiento técnico ni de cambios en la oferta de productos. Tampoco asumimos responsabilidad sobre el funcionamiento de herramientas externas enlazadas (como Google Maps).</p>
+            </div>
+
+            <div>
+                <h3 class="font-bold text-gray-900 uppercase border-b border-[#ff3c00] inline-block mb-1">4. Normas de Convivencia y Derecho de Admisión</h3>
+                <p>La información contenida en esta web refleja el ambiente familiar de nuestro local físico. Recordamos que, tanto en nuestra terraza frente al parque infantil como en el interior, se aplican estrictamente las normativas vigentes de hostelería de Castilla y León, reservándonos el derecho de admisión para garantizar la tranquilidad y seguridad de todos los clientes.</p>
+            </div>
+
+            <div>
+                <h3 class="font-bold text-gray-900 uppercase border-b border-[#ff3c00] inline-block mb-1">5. Modificaciones de las Condiciones</h3>
+                <p>Los titulares del establecimiento se reservan la facultad de modificar o actualizar estas Condiciones de Uso en cualquier momento para adaptarlas a novedades legislativas o a cambios en el propio funcionamiento del bar.</p>
+            </div>
+        </div>
+        
+        <div class="p-3 text-center border-t bg-gray-50 rounded-b-3xl">
+            <button onclick="toggleModal('modalUso')" class="bg-black text-white px-8 py-1.5 rounded-full font-bold uppercase text-xs hover:bg-[#ff3c00] transition-all shadow-lg">Aceptar y cerrar</button>
+        </div>
+    </div>
+</div>
+
+<div id="modalCookies" class="fixed inset-0 bg-black bg-opacity-90 z-[100000] hidden flex items-center justify-center p-4">
+    <div class="bg-white text-gray-800 max-w-2xl w-full rounded-3xl border-4 border-[#ff3c00] shadow-2xl overflow-hidden">
+        <div class="p-6 md:p-8 text-xs space-y-3 text-justify modal-content overflow-y-auto" style="max-height: 65vh;">
+            <h2 class="font-bold uppercase text-lg border-b pb-1 text-gray-900">Política de Cookies - Bar El Candil</h2>
+            
+            <p>En <strong>Bar El Candil</strong> utilizamos cookies y tecnologías similares para garantizar el correcto funcionamiento de nuestra página web, recordar tus preferencias de navegación y analizar de forma anónima la interacción con nuestro sitio para ofrecerte una experiencia óptima.</p>
+            
+            <div>
+                <h3 class="font-bold text-gray-900 uppercase border-b border-[#ff3c00] inline-block mb-1">1. ¿Qué es una cookie?</h3>
+                <p>Es un pequeño archivo de texto que los sitios web almacenan en tu navegador o dispositivo. Sirve para que la web recuerde información sobre tu visita (como tus opciones de privacidad), facilitando tu próxima navegación.</p>
+            </div>
+
+            <div>
+                <h3 class="font-bold text-gray-900 uppercase border-b border-[#ff3c00] inline-block mb-1">2. Tipos de cookies que utilizamos</h3>
+                <ul class="list-disc ml-4 space-y-0.5 mt-0.5">
+                    <li><strong>Técnicas (Necesarias):</strong> Esenciales para permitirte navegar por la web y utilizar sus funciones básicas. No se pueden desactivar.</li>
+                    <li><strong>De Personalización o Análisis:</strong> Nos permiten recordar tus preferencias e integrar herramientas interactivas externas de forma fluida.</li>
+                </ul>
+            </div>
+
+            <div>
+                <h3 class="font-bold text-gray-900 uppercase border-b border-[#ff3c00] inline-block mb-1">3. Enlaces a terceros</h3>
+                <p>Esta página web contiene enlaces a plataformas externas (como Google Maps en el footer). Bar El Candil no tiene control ni se hace responsable de las políticas de cookies de estos terceros al interactuar con sus mapas.</p>
+            </div>
+
+            <div>
+                <h3 class="font-bold text-gray-900 uppercase border-b border-[#ff3c00] inline-block mb-1">4. Configuración o revocación</h3>
+                <p>Puedes permitir, bloquear o eliminar las cookies instaladas en tu equipo modificando los parámetros de configuración de privacidad en las opciones de tu navegador web habitual (Chrome, Firefox, Safari, etc.).</p>
+            </div>
+        </div>
+	<div class="p-3 text-center border-t bg-gray-50 flex justify-center gap-3 rounded-b-3xl">
+            <button onclick="toggleModal('modalCookies')" class="bg-gray-200 text-gray-800 px-6 py-1.5 rounded-full font-bold uppercase text-xs hover:bg-gray-300 transition-all">
+                Cerrar
+            </button>
+            <button onclick="toggleModal('modalCookies'); toggleModal('modalOpcion');" class="bg-[#ff3c00] text-white px-8 py-1.5 rounded-full font-bold uppercase text-xs hover:scale-105 transition-all shadow-lg">
+                Configurar Preferencias
+            </button>
+        </div>
+    </div>
+</div>
+
+<div id="modalPrivacidad" class="fixed inset-0 bg-black bg-opacity-90 z-[100000] hidden flex items-center justify-center p-4">
+    <div class="bg-white text-gray-800 max-w-4xl w-full rounded-3xl border-4 border-[#ff3c00] shadow-2xl overflow-hidden">
+        <div class="p-4 border-b flex justify-between items-center bg-gray-50 rounded-t-3xl">
+            <h2 class="font-crazy text-xl text-[#ff3c00] uppercase font-bold">Política de Privacidad</h2>
+            <button onclick="toggleModal('modalPrivacidad')" class="text-gray-400 hover:text-black text-2xl transition">×</button>
+        </div>
+        
+        <div class="p-6 md:p-8 text-xs space-y-3 text-justify modal-content overflow-y-auto" style="max-height: 65vh;">
+            <div class="bg-gray-50 border border-gray-200 rounded-xl overflow-hidden mt-1">
+                <div class="bg-gray-200 p-1.5 font-bold text-center uppercase text-[10px] tracking-widest">Protección de Datos (Resumen)</div>
+                <table class="w-full text-[11px]">
+                    <tr class="border-b border-gray-200"><td class="p-2 font-bold bg-gray-100 w-1/4">Responsable</td><td class="p-2">Bar El Candil NIF:71523831H</td></tr>
+                    <tr class="border-b border-gray-200"><td class="p-2 font-bold bg-gray-100">Finalidad</td><td class="p-2">Garantizar las funciones técnicas del sitio web (como mapas de localización).</td></tr>
+                    <tr class="border-b border-gray-200"><td class="p-2 font-bold bg-gray-100">Legitimación</td><td class="p-2">Consentimiento del usuario al navegar por el portal.</td></tr>
+                    <tr class="border-b border-gray-200"><td class="p-2 font-bold bg-gray-100">Destinatarios</td><td class="p-2">No se ceden datos a terceros. Google Maps procesa datos técnicos según su propia política.</td></tr>
+                    <tr><td class="p-2 font-bold bg-gray-100">Derechos</td><td class="p-2">Acceso, rectificación y supresión de datos borrando las cookies del navegador.</td></tr>
+                </table>
+            </div>
+
+            <div>
+                <h3 class="font-bold text-gray-900 uppercase border-b border-[#ff3c00] inline-block mb-1">1. Responsable del Tratamiento</h3>
+                <p>El responsable de la gestión y tratamiento técnico de esta web es <strong>Bar El Candil</strong>, con NIF: <strong>71523831H</strong> y con domicilio físico situado en la Calle la Vega 20, 24470 Páramo del Sil, León (España). Puede contactar con los titulares directamente en el establecimiento.</p>
+            </div>
+
+            <div>
+                <h3 class="font-bold text-gray-900 uppercase border-b border-[#ff3c00] inline-block mb-1">2. Datos Recogidos y Finalidad</h3>
+                <p>Este sitio web es de carácter informático y no dispone de formularios de registro ni pasarelas de pago. Solo se procesan datos técnicos automáticos (como cookies de sesión) con la única finalidad de garantizar una navegación correcta y fluida.</p>
+            </div>
+
+            <div>
+                <h3 class="font-bold text-gray-900 uppercase border-b border-[#ff3c00] inline-block mb-1">3. Enlaces y Servicios de Terceros</h3>
+                <p>Integramos la herramienta de **Google Maps** en el footer para facilitar nuestra localización. Al usar el mapa, Google puede recopilar información técnica de su dispositivo. Bar El Candil no ejerce control sobre dicho tratamiento; le aconsejamos consultar la política de privacidad de Google.</p>
+            </div>
+
+            <div>
+                <h3 class="font-bold text-gray-900 uppercase border-b border-[#ff3c00] inline-block mb-1">4. Conservación y Derechos</h3>
+                <p>No almacenamos historiales de usuarios ni perfiles comerciales. Usted mantiene todos sus derechos conforme al RGPD y puede revocar su consentimiento en cualquier momento eliminando las cookies guardadas desde la configuración de su propio navegador de Internet.</p>
+            </div>
+        </div>
+        
+        <div class="p-3 text-center border-t bg-gray-50 rounded-b-3xl">
+            <button onclick="toggleModal('modalPrivacidad')" class="bg-black text-white px-10 py-1.5 rounded-full font-bold uppercase text-xs hover:bg-[#ff3c00] transition-all shadow-lg">Entendido</button>
+        </div>
+    </div>
+</div>
+
+<!-- BANNER DE COOKIES -->
+<div id="cookie-law-banner" class="fixed bottom-0 left-0 w-full z-[9999] p-4 transform transition-translate duration-500 hidden">
+    <div class="max-w-4xl mx-auto bg-black border border-[#ff3c00]/30 rounded-2xl shadow-[0_0_30px_rgba(0,0,0,0.8)] p-6 md:p-8 backdrop-blur-md">
+        <div class="flex flex-col md:flex-row items-center justify-between gap-6">
+            <div class="text-center md:text-left">
+                <h3 class="text-[#ff3c00] font-marker text-xl mb-2">¿UNAS COOKIES RECIÉN HORNEADAS EN EL CANDIL?</h3>
+                <p class="text-gray-300 text-sm leading-relaxed">
+                    Utilizamos cookies para que tu experiencia en nuestra web sea óptima. Puedes aceptar todas las cookies, rechazarlas o configurar tus preferencias de forma detallada.
+                </p>
+            </div>
+            <div class="flex flex-wrap justify-center gap-3 shrink-0">
+                <button onclick="toggleModal('modalOpcion')" class="bg-transparent text-gray-300 border border-gray-500 px-5 py-3 rounded-xl font-bold uppercase text-xs hover:bg-gray-800 transition-all">
+                    CONFIGURAR
+                </button>
+                <button onclick="rejectAllCookies()" class="bg-transparent text-[#ff3c00] border border-[#ff3c00] px-5 py-3 rounded-xl font-bold uppercase text-xs hover:bg-[#ff3c00]/10 transition-all">
+                    RECHAZAR
+                </button>
+                <button onclick="acceptAllCookies()" class="bg-[#ff3c00] text-white px-6 py-3 rounded-xl font-bold uppercase text-xs hover:scale-105 transition-all shadow-[0_0_15px_rgba(255,60,0,0.4)]">
+                    ACEPTAR
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="modalOpcion" class="fixed inset-0 bg-black bg-opacity-90 z-[100000] hidden flex items-center justify-center p-4">
+    <div class="bg-white text-gray-800 max-w-2xl w-full rounded-3xl border-4 border-[#ff3c00] shadow-2xl overflow-hidden">
+        <div class="p-4 border-b flex justify-between items-center bg-gray-50 rounded-t-3xl">
+            <h2 class="font-crazy text-xl text-[#ff3c00] uppercase font-bold">Panel de Configuración de Cookies</h2>
+            <button onclick="toggleModal('modalOpcion')" class="text-gray-400 hover:text-black text-2xl transition">×</button>
+        </div>
+        
+        <div class="p-6 md:p-8 text-xs space-y-6 modal-content overflow-y-auto" style="max-height: 60vh;">
+            <p class="text-gray-600 text-justify">
+                A continuación, puede personalizar qué tipos de cookies permite activar en este sitio web. Sus opciones se guardarán de forma segura de acuerdo a la normativa de privacidad.
+            </p>
+
+            <div class="flex items-start justify-between p-4 bg-gray-50 rounded-2xl border border-gray-200 gap-4">
+                <div class="space-y-1">
+                    <h4 class="font-bold text-gray-900 text-sm">Cookies necesarias (Técnicas)</h4>
+                    <p class="text-gray-500">Imprescindibles para permitir la navegación básica, recordar tus opciones de privacidad y garantizar el correcto funcionamiento del sitio.</p>
+                </div>
+                <div class="flex items-center shrink-0">
+                    <span class="text-[10px] font-bold uppercase tracking-wider bg-gray-200 text-gray-600 px-2 py-1 rounded-md">Obligatorias</span>
+                </div>
+            </div>
+
+	    <div class="flex items-start justify-between p-4 bg-gray-50 rounded-2xl border border-gray-200 gap-4">
+                <div class="space-y-1">
+                    <h4 class="font-bold text-gray-900 text-sm">Cookies analíticas y de terceros</h4>
+                    <p class="text-gray-500">Necesarias para habilitar herramientas interactivas externas. En este sitio web se utilizan exclusivamente para cargar el mapa interactivo de Google Maps y los mapas de rutas de Wikiloc.</p>
+                </div>
+                <label class="relative inline-flex items-center cursor-pointer select-none shrink-0 mt-1">
+                    <input type="checkbox" id="cookie_analytics" class="sr-only peer">
+                    <div class="w-11 h-6 bg-gray-300 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-[#ff3c00]"></div>
+                </label>
+            </div>
+        
+        <div class="p-4 text-center border-t bg-gray-50 flex justify-end gap-3 rounded-b-3xl">
+            <button onclick="toggleModal('modalOpcion')" class="bg-gray-200 text-gray-800 px-5 py-2 rounded-full font-bold uppercase text-xs hover:bg-gray-300 transition-all">
+                Cancelar
+            </button>
+            <button onclick="saveCustomCookies()" class="bg-[#ff3c00] text-white px-8 py-2 rounded-full font-bold uppercase text-xs hover:scale-105 transition-all shadow-lg">
+                Guardar Selección
+            </button>
+        </div>
+    </div>
+</div>
+
+<script>
+// --- NUEVA FUNCIÓN LEGAL PARA ACTIVACIÓN DIRECTA DESDE EL MAPA ---
+function activateMapsDirectly() {
+    // Despierta el contenido de terceros de forma inmediata para el usuario
+    loadThirdPartyContent();
+    
+    // Sincroniza el interruptor del modal de configuración por si lo abre después
+    const analyticsInput = document.getElementById('cookie_analytics');
+    if (analyticsInput) analyticsInput.checked = true;
+    
+    console.log("Mapas activados bajo consentimiento específico para esta funcionalidad.");
+}
+
+// 1. Función interna para inyectar y despertar los iFrames (Google Maps y todos los de Wikiloc)
+function loadThirdPartyContent() {
+    // Despertar Google Maps (Footer)
+    const googleMap = document.getElementById('google-map');
+    const googlePlaceholder = document.getElementById('map-placeholder');
+    if (googleMap && googlePlaceholder) {
+        if (googleMap.getAttribute('data-src')) {
+            googleMap.setAttribute('src', googleMap.getAttribute('data-src'));
+            googleMap.removeAttribute('data-src');
+        }
+        googleMap.style.display = 'block';
+        googlePlaceholder.style.display = 'none';
+    }
+
+    // Despertar todas las rutas de Wikiloc de la página manteniendo su estructura CSS exacta
+    const wikilocIframes = document.querySelectorAll('.wikiloc-iframe');
+    const wikilocPlaceholders = document.querySelectorAll('.wikiloc-placeholder');
+    
+    wikilocIframes.forEach(iframe => {
+        if (iframe.getAttribute('data-src')) {
+            iframe.setAttribute('src', iframe.getAttribute('data-src'));
+            iframe.removeAttribute('data-src');
+        }
+        iframe.style.setProperty('display', 'block', 'important');
+    });
+
+    wikilocPlaceholders.forEach(placeholder => {
+        placeholder.style.setProperty('display', 'none', 'important');
+    });
+}
+
+// 2. Función para volver a bloquear y limpiar los iFrames si se revocan las cookies
+function clearThirdPartyContent() {
+    // Ocultar Google Maps
+    const googleMap = document.getElementById('google-map');
+    const googlePlaceholder = document.getElementById('map-placeholder');
+    if (googleMap && googlePlaceholder) {
+        googleMap.style.display = 'none';
+        googlePlaceholder.style.setProperty('display', 'flex', 'important');
+        googleMap.setAttribute('src', '');
+    }
+
+    // Ocultar todas las rutas de Wikiloc
+    const wikilocIframes = document.querySelectorAll('.wikiloc-iframe');
+    const wikilocPlaceholders = document.querySelectorAll('.wikiloc-placeholder');
+    
+    wikilocIframes.forEach(iframe => {
+        iframe.style.setProperty('display', 'none', 'important');
+        iframe.setAttribute('src', '');
+    });
+
+    wikilocPlaceholders.forEach(placeholder => {
+        placeholder.style.setProperty('display', 'flex', 'important');
+    });
+}
+
+// Vinculación directa con las decisiones del banner de privacidad
+function rejectAllCookies() {
+    const banner = document.getElementById('cookie-law-banner');
+    if (banner) banner.classList.add('hidden');
+    
+    localStorage.setItem('candil_cookies_decision', 'true');
+    localStorage.setItem('cookie_analytics_allowed', 'false');
+    
+    clearThirdPartyContent();
+    
+    const analyticsInput = document.getElementById('cookie_analytics');
+    if (analyticsInput) analyticsInput.checked = false;
+}
+
+function acceptAllCookies() {
+    const banner = document.getElementById('cookie-law-banner');
+    if (banner) banner.classList.add('hidden');
+    
+    localStorage.setItem('candil_cookies_decision', 'true');
+    localStorage.setItem('cookie_analytics_allowed', 'true');
+    
+    const analyticsInput = document.getElementById('cookie_analytics');
+    if (analyticsInput) analyticsInput.checked = true;
+    
+    loadThirdPartyContent();
+}
+
+function saveCustomCookies() {
+    const banner = document.getElementById('cookie-law-banner');
+    const analyticsChecked = document.getElementById('cookie_analytics')?.checked || false;
+
+    localStorage.setItem('candil_cookies_decision', 'true');
+    localStorage.setItem('cookie_analytics_allowed', analyticsChecked ? 'true' : 'false');
+
+    if (banner) banner.classList.add('hidden');
+    toggleModal('modalOpcion');
+    
+    if (analyticsChecked) {
+        loadThirdPartyContent();
+    } else {
+        clearThirdPartyContent();
+    }
+}
+
+function toggleModal(id) {
+    const modal = document.getElementById(id);
+    if (modal) {
+        modal.classList.toggle('hidden');
+        if (!modal.classList.contains('hidden')) {
+            document.body.style.overflow = 'hidden'; 
+        } else {
+            document.body.style.overflow = 'auto'; 
+        }
+    }
+}
+
+// --- COMPROBACIÓN AUTO-EJECUTABLE AL CARGAR LA PÁGINA ---
+(function checkCookieStatus() {
+    const hasDecision = localStorage.getItem('candil_cookies_decision');
+    const banner = document.getElementById('cookie-law-banner');
+    const analyticsAllowed = localStorage.getItem('cookie_analytics_allowed');
+    
+    if (banner) {
+        if (hasDecision === 'true') {
+            banner.classList.add('hidden');
+        } else {
+            banner.classList.remove('hidden');
+        }
+    }
+
+    if (analyticsAllowed === 'true') {
+        window.addEventListener('DOMContentLoaded', loadThirdPartyContent);
+    }
+
+    window.addEventListener('DOMContentLoaded', () => {
+        const analyticsInput = document.getElementById('cookie_analytics');
+        if (analyticsInput) {
+            analyticsInput.checked = (analyticsAllowed === 'true');
+        }
+    });
+})();
+</script>
 
 </body>
 </html>
