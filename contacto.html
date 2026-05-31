@@ -764,6 +764,35 @@
 </div>
 
 <script>
+function sendToWhatsApp(event) {
+    // 1. Evitar que la página se recargue al enviar el formulario
+    event.preventDefault();
+
+    // 2. Definir tu número de teléfono (con el prefijo del país, sin el signo +)
+    const phoneNumber = "34639212610";
+
+    // 3. Capturar los valores de los campos del formulario
+    const nombre = document.getElementById('nombre').value;
+    const telefono = document.getElementById('telefono').value;
+    const email = document.getElementById('email').value;
+    const mensaje = document.getElementById('mensaje').value;
+
+    // 4. Crear el texto del mensaje formateado (con saltos de línea)
+    const textMessage = `*Nuevo mensaje desde la web*\n\n` +
+                        `👤 *Nombre:* ${nombre}\n` +
+                        `📞 *Teléfono:* ${telefono}\n` +
+                        `📧 *Email:* ${email}\n\n` +
+                        `💬 *Mensaje:* ${mensaje}`;
+
+    // 5. Codificar el texto para que sea válido en una URL
+    const encodedMessage = encodeURIComponent(textMessage);
+
+    // 6. Crear la URL de WhatsApp (funciona en móvil y PC)
+    const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
+
+    // 7. Abrir WhatsApp en una nueva pestaña
+    window.open(whatsappUrl, '_blank');
+}
 // --- CONTROL DE MODALES (ABRIR / CERRAR) ---
 function toggleModal(id) {
     const modal = document.getElementById(id);
