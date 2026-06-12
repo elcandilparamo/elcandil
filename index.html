@@ -513,48 +513,6 @@
         </div>
     </div>
 </div>
-
-<div id="modalCookies" class="fixed inset-0 bg-black bg-opacity-90 z-[100000] hidden flex items-center justify-center p-4">
-    <div class="bg-white text-gray-800 max-w-2xl w-full rounded-3xl border-4 border-[#ff3c00] shadow-2xl overflow-hidden">
-        <div class="p-6 md:p-8 text-xs space-y-3 text-justify modal-content overflow-y-auto" style="max-height: 65vh;">
-            <h2 class="font-bold uppercase text-lg border-b pb-1 text-gray-900">Política de Cookies - Bar El Candil</h2>
-            
-            <p>En <strong>Bar El Candil</strong> utilizamos cookies y tecnologías similares para garantizar el correcto funcionamiento de nuestra página web, recordar tus preferencias de navegación y analizar de forma anónima la interacción con nuestro sitio para ofrecerte una experiencia óptima.</p>
-            
-            <div>
-                <h3 class="font-bold text-gray-900 uppercase border-b border-[#ff3c00] inline-block mb-1">1. ¿Qué es una cookie?</h3>
-                <p>Es un pequeño archivo de texto que los sitios web almacenan en tu navegador o dispositivo. Sirve para que la web recuerde información sobre tu visita (como tus opciones de privacidad), facilitando tu próxima navegación.</p>
-            </div>
-
-            <div>
-                <h3 class="font-bold text-gray-900 uppercase border-b border-[#ff3c00] inline-block mb-1">2. Tipos de cookies que utilizamos</h3>
-                <ul class="list-disc ml-4 space-y-0.5 mt-0.5">
-                    <li><strong>Técnicas (Necesarias):</strong> Esenciales para permitirte navegar por la web y utilizar sus funciones básicas. No se pueden desactivar.</li>
-                    <li><strong>De Personalización o Análisis:</strong> Nos permiten recordar tus preferencias e integrar herramientas interactivas externas de forma fluida.</li>
-                </ul>
-            </div>
-
-            <div>
-                <h3 class="font-bold text-gray-900 uppercase border-b border-[#ff3c00] inline-block mb-1">3. Enlaces a terceros</h3>
-                <p>Esta página web contiene enlaces a plataformas externas (como Google Maps en el footer). Bar El Candil no tiene control ni se hace responsable de las políticas de cookies de estos terceros al interactuar con sus mapas.</p>
-            </div>
-
-            <div>
-                <h3 class="font-bold text-gray-900 uppercase border-b border-[#ff3c00] inline-block mb-1">4. Configuración o revocación</h3>
-                <p>Puedes permitir, bloquear o eliminar las cookies instaladas en tu equipo modificando los parámetros de configuración de privacidad en las opciones de tu navegador web habitual (Chrome, Firefox, Safari, etc.).</p>
-            </div>
-        </div>
-	<div class="p-3 text-center border-t bg-gray-50 flex justify-center gap-3 rounded-b-3xl">
-            <button onclick="toggleModal('modalCookies')" class="bg-gray-200 text-gray-800 px-6 py-1.5 rounded-full font-bold uppercase text-xs hover:bg-gray-300 transition-all">
-                Cerrar
-            </button>
-            <button onclick="toggleModal('modalCookies'); toggleModal('modalOpcion');" class="bg-[#ff3c00] text-white px-8 py-1.5 rounded-full font-bold uppercase text-xs hover:scale-105 transition-all shadow-lg">
-                Configurar Preferencias
-            </button>
-        </div>
-    </div>
-</div>
-
 <div id="modalPrivacidad" class="fixed inset-0 bg-black bg-opacity-90 z-[100000] hidden flex items-center justify-center p-4">
     <div class="bg-white text-gray-800 max-w-4xl w-full rounded-3xl border-4 border-[#ff3c00] shadow-2xl overflow-hidden">
         <div class="p-4 border-b flex justify-between items-center bg-gray-50 rounded-t-3xl">
@@ -613,10 +571,10 @@
                 </p>
             </div>
             <div class="flex flex-wrap justify-center gap-3 shrink-0">
-                <button onclick="toggleModal('modalOpcion')" class="bg-transparent text-gray-300 border border-gray-500 px-5 py-3 rounded-xl font-bold uppercase text-xs hover:bg-gray-800 transition-all">
+                <button onclick="toggleModal('modalCookies')" class="bg-transparent text-gray-300 border border-gray-500 px-5 py-3 rounded-xl font-bold uppercase text-xs hover:bg-gray-800 transition-all">
                     CONFIGURAR
                 </button>
-                <button onclick="rejectAllCookies()" class="bg-transparent text-[#ff3c00] border border-[#ff3c00] px-5 py-3 rounded-xl font-bold uppercase text-xs hover:bg-[#ff3c00]/10 transition-all">
+                <button onclick="rejectAllCookies()" class="bg-[#ff3c00] text-white px-6 py-3 rounded-xl font-bold uppercase text-xs hover:scale-105 transition-all shadow-[0_0_15px_rgba(255,60,0,0.4)]">
                     RECHAZAR
                 </button>
                 <button onclick="acceptAllCookies()" class="bg-[#ff3c00] text-white px-6 py-3 rounded-xl font-bold uppercase text-xs hover:scale-105 transition-all shadow-[0_0_15px_rgba(255,60,0,0.4)]">
@@ -627,46 +585,142 @@
     </div>
 </div>
 
-<div id="modalOpcion" class="fixed inset-0 bg-black bg-opacity-90 z-[100000] hidden flex items-center justify-center p-4">
-    <div class="bg-white text-gray-800 max-w-2xl w-full rounded-3xl border-4 border-[#ff3c00] shadow-2xl overflow-hidden">
-        <div class="p-4 border-b flex justify-between items-center bg-gray-50 rounded-t-3xl">
-            <h2 class="font-crazy text-xl text-[#ff3c00] uppercase font-bold">Panel de Configuración de Cookies</h2>
-            <button onclick="toggleModal('modalOpcion')" class="text-gray-400 hover:text-black text-2xl transition">×</button>
+<div id="modalCookies" class="fixed inset-0 bg-black bg-opacity-90 z-[100000] hidden flex items-center justify-center p-4">
+    <div class="bg-white text-gray-800 max-w-4xl w-full rounded-3xl border-4 border-[#ff3c00] shadow-2xl overflow-hidden">
+        
+        <!-- Cabecera -->
+        <div class="p-6 border-b flex justify-between items-center bg-gray-50 rounded-t-3xl">
+            <h2 class="font-crazy text-2xl text-[#ff3c00] uppercase">Política y Configuración de Cookies</h2>
+            <button onclick="toggleModal('modalCookies')" class="text-gray-400 hover:text-black text-3xl transition" aria-label="Cerrar panel de cookies">×</button>
         </div>
         
-        <div class="p-6 md:p-8 text-xs space-y-6 modal-content overflow-y-auto" style="max-height: 60vh;">
-            <p class="text-gray-600 text-justify">
-                A continuación, puede personalizar qué tipos de cookies permite activar en este sitio web. Sus opciones se guardarán de forma segura de acuerdo a la normativa de privacidad.
-            </p>
+        <!-- Cuerpo de las Cookies -->
+        <div class="p-6 md:p-10 text-sm space-y-6 text-justify modal-content overflow-y-auto" style="max-height: 70vh;">
+            
+            <!-- Capa 1: Información Básica Obligatoria -->
+            <div class="bg-gray-50 border-2 border-gray-200 rounded-xl overflow-hidden mb-6">
+                <div class="bg-gray-200 p-2 font-bold text-center uppercase text-xs tracking-widest text-gray-700">Información Básica sobre Cookies</div>
+                <table class="w-full text-xs">
+                    <tr class="border-b border-gray-200">
+                        <td class="p-3 font-bold bg-gray-100 w-1/3">Responsable</td>
+                        <td class="p-3"><strong>Ana Gancedo Fernández</strong></td>
+                    </tr>
+                    <tr class="border-b border-gray-200">
+                        <td class="p-3 font-bold bg-gray-100 w-1/3">Nombre Comercial</td>
+                        <td class="p-3"><strong>El Candil</strong></td>
+                    </tr>
+                    <tr class="border-b border-gray-200">
+                        <td class="p-3 font-bold bg-gray-100">Finalidad</td>
+                        <td class="p-3">Garantizar el funcionamiento técnico del e-commerce, elaborar estadísticas de rendimiento web y recordar preferencias del usuario.</td>
+                    </tr>
+                    <tr>
+                        <td class="p-3 font-bold bg-gray-100">Gestión</td>
+                        <td class="p-3">Puede marcar sus preferencias a continuación en el Panel de Configuración antes de guardar su elección.</td>
+                    </tr>
+                </table>
+            </div>
 
-            <div class="flex items-start justify-between p-4 bg-gray-50 rounded-2xl border border-gray-200 gap-4">
-                <div class="space-y-1">
-                    <h4 class="font-bold text-gray-900 text-sm">Cookies necesarias (Técnicas)</h4>
-                    <p class="text-gray-500">Imprescindibles para permitir la navegación básica, recordar tus opciones de privacidad y garantizar el correcto funcionamiento del sitio.</p>
+            <!-- Capa 2: Panel de Configuración Granular (Obligatorio por la AEPD) -->
+            <div class="space-y-4 bg-gray-50 p-4 rounded-xl border border-gray-200">
+                <h3 class="font-bold text-gray-900 uppercase text-xs tracking-wider border-b pb-1">Panel de Configuración Granular</h3>
+                
+                <!-- Técnicas -->
+                <div class="flex items-start justify-between gap-4 p-2 bg-white rounded-lg border">
+                    <div class="space-y-1">
+                        <span class="font-bold text-xs text-gray-900 uppercase">1. Cookies Técnicas e Imperativas</span>
+                        <p class="text-xs text-gray-500">Esenciales para que la web funcione (cesta de la compra, login de usuario, seguridad anti-fraude). No se pueden desactivar.</p>
+                    </div>
+                    <span class="text-xs font-bold text-green-600 bg-green-50 px-3 py-1 rounded-full uppercase border border-green-200 select-none">Siempre Activas</span>
                 </div>
-                <div class="flex items-center shrink-0">
-                    <span class="text-[10px] font-bold uppercase tracking-wider bg-gray-200 text-gray-600 px-2 py-1 rounded-md">Obligatorias</span>
+
+                <!-- Analíticas -->
+                <div class="flex items-start justify-between gap-4 p-2 bg-white rounded-lg border">
+                    <div class="space-y-1">
+                        <label for="cookie_analytics" class="font-bold text-xs text-gray-900 uppercase cursor-pointer">2. Cookies analíticas y de terceros</label>
+                        <p class="text-xs text-gray-500">Nos permiten medir el volumen de visitas de forma agregada, saber qué botes de pintura o productos llaman más la atención y optimizar el rendimiento técnico de la web, necesarias para habilitar herramientas interactivas externas como google maps.</p>
+                    </div>
+                    <input type="checkbox" id="cookie_analytics" class="w-5 h-5 accent-[#40E0D0] cursor-pointer rounded mt-1" aria-label="Permitir cookies analíticas">
+                </div>
+
+                <!-- Personalización -->
+                <div class="flex items-start justify-between gap-4 p-2 bg-white rounded-lg border">
+                    <div class="space-y-1">
+                        <label for="cookie_prefs" class="font-bold text-xs text-gray-900 uppercase cursor-pointer">3. Cookies de Personalización o Preferencias</label>
+                        <p class="text-xs text-gray-500">Utilizadas para recordar opciones de visualización del usuario, tales como el idioma predeterminado o la persistencia de elementos estéticos.</p>
+                    </div>
+                    <input type="checkbox" id="cookie_prefs" class="w-5 h-5 accent-[#40E0D0] cursor-pointer rounded mt-1" aria-label="Permitir cookies de personalización">
                 </div>
             </div>
 
-	    <div class="flex items-start justify-between p-4 bg-gray-50 rounded-2xl border border-gray-200 gap-4">
-                <div class="space-y-1">
-                    <h4 class="font-bold text-gray-900 text-sm">Cookies analíticas y de terceros</h4>
-                    <p class="text-gray-500">Necesarias para habilitar herramientas interactivas externas. En este sitio web se utilizan exclusivamente para cargar el mapa interactivo de Google Maps y los mapas de rutas de Wikiloc.</p>
-                </div>
-                <label class="relative inline-flex items-center cursor-pointer select-none shrink-0 mt-1">
-                    <input type="checkbox" id="cookie_analytics" class="sr-only peer">
-                    <div class="w-11 h-6 bg-gray-300 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-[#ff3c00]"></div>
-                </label>
-            </div>
+            <!-- Capa 3: Información de Inventario y Detalle Técnico -->
+<!-- Tabla de inventario técnico requerida por la AEPD (Actualizada para Shopify y Google) -->
+<section>
+    <h3 class="font-bold text-gray-900 uppercase mb-2 border-b-2 border-[#ff3c00] inline-block">3. Inventario Técnico de Cookies</h3>
+    <div class="overflow-x-auto mt-2">
+        <table class="w-full text-left text-xs border border-gray-200">
+            <thead>
+                <tr class="bg-gray-100 border-b border-gray-200">
+                    <th class="p-2 font-bold">Identificador</th>
+                    <th class="p-2 font-bold">Proveedor</th>
+                    <th class="p-2 font-bold">Finalidad</th>
+                    <th class="p-2 font-bold">Duración</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- COOKIES TÉCNICAS (PROPIAS Y SHOPIFY) -->
+                <tr class="border-b bg-gray-50/50">
+                    <td class="p-2 font-mono text-gray-600">cookie_policy / PHPSESSID</td>
+                    <td class="p-2">Propia</td>
+                    <td class="p-2"><span class="text-[10px] font-bold text-gray-500 uppercase mr-1">[Técnica]</span> Almacenar tus preferencias de privacidad y mantener la navegación básica.</td>
+                    <td class="p-2">1 año / Sesión</td>
+                </tr>
+                <tr class="border-b bg-gray-50/50">
+                    <td class="p-2 font-mono text-gray-600">_shopify_s / _shopify_y / shopify_cart</td>
+                    <td class="p-2">Shopify Inc.</td>
+                    <td class="p-2"><span class="text-[10px] font-bold text-gray-500 uppercase mr-1">[Técnica]</span> Gestión del carrito de la compra, procesamiento del pago seguro y mantenimiento de la sesión de usuario.</td>
+                    <td class="p-2">Sesión a 1 año</td>
+                </tr>
+                <tr class="border-b bg-gray-50/50">
+                    <td class="p-2 font-mono text-gray-600">secure_customer_sig / _ab</td>
+                    <td class="p-2">Shopify Inc.</td>
+                    <td class="p-2"><span class="text-[10px] font-bold text-gray-500 uppercase mr-1">[Seguridad]</span> Autenticación segura de clientes y prevención de fraudes en la pasarela de pago.</td>
+                    <td class="p-2">Hasta 2 años</td>
+                </tr>
+                <!-- COOKIES DE ANALÍTICA Y TERCEROS -->
+                <tr class="border-b">
+                    <td class="p-2 font-mono text-gray-600">_shopify_sa_p / _shopify_sa_t / _landing_page</td>
+                    <td class="p-2">Shopify Inc.</td>
+                    <td class="p-2"><span class="text-[10px] font-bold text-blue-500 uppercase mr-1">[Analítica]</span> Recopilación de estadísticas sobre el volumen de visitas, páginas vistas y rendimiento de la tienda.</td>
+                    <td class="p-2">30 min a 2 semanas</td>
+                </tr>
+                <tr>
+                    <td class="p-2 font-mono text-gray-600">NID / SID / APISID</td>
+                    <td class="p-2">Google Inc.</td>
+                    <td class="p-2"><span class="text-[10px] font-bold text-purple-500 uppercase mr-1">[Terceros]</span> Permite el correcto funcionamiento y renderizado del mapa interactivo de ubicación.</td>
+                    <td class="p-2">Hasta 2 años</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</section>
+
+            <section>
+                <h3 class="font-bold text-gray-900 uppercase mb-2 border-b-2 border-[#FF00FF] inline-block">Revocación y Configuración Alternativa</h3>
+                <p>Usted puede modificar o retirar sus consentimientos directamente desde los selectores de este panel en cualquier momento. Asimismo, la práctica totalidad de navegadores del mercado permiten bloquear, restringir o eliminar de raíz el histórico de cookies desde sus apartados de Configuración de Seguridad o Privacidad.</p>
+                <p class="mt-2">Para ampliar detalles sobre el tratamiento general de su información personal, acceda a nuestra <a href="https://crazycarsgarage.github.io/crazycars/index.html" onclick="toggleModal('modalCookies'); toggleModal('modalPrivacidad'); return false;" class="text-[#40E0D0] underline font-bold">Política de Privacidad</a> o contacte mediante: <a href="mailto:anonimonaranja@gmail.com" class="hover:text-[#40E0D0] transition">anonimonaranja@gmail.com.</a></p>
+            </section>
+        </div>
         
-        <div class="p-4 text-center border-t bg-gray-50 flex justify-end gap-3 rounded-b-3xl">
-            <button onclick="toggleModal('modalOpcion')" class="bg-gray-200 text-gray-800 px-5 py-2 rounded-full font-bold uppercase text-xs hover:bg-gray-300 transition-all">
-                Cancelar
-            </button>
-            <button onclick="saveCustomCookies()" class="bg-[#ff3c00] text-white px-8 py-2 rounded-full font-bold uppercase text-xs hover:scale-105 transition-all shadow-lg">
-                Guardar Selección
-            </button>
+        <!-- Pie del Modal con Funcionalidades de Guardado Lógicas -->
+        <div class="p-4 text-center border-t bg-gray-50 rounded-b-3xl flex flex-wrap justify-center gap-2 md:gap-4">
+            <!-- Botón para rechazar todo lo opcional -->
+            <button onclick="rejectAllCookies()" class="bg-gray-300 text-gray-700 px-6 py-2 rounded-full font-bold uppercase text-xs hover:bg-[#ff3c00] transition-all shadow-md hover:text-white">Solo Técnicas</button>
+            
+            <!-- Botón para guardar lo que el usuario haya marcado en los checkboxes -->
+            <button onclick="saveCustomCookies()" class="bg-gray-600 text-white px-6 py-2 rounded-full font-bold uppercase text-xs hover:bg-[#ff3c00] transition-all shadow-md">Guardar Selección</button>
+            
+            <!-- Botón para aceptar de golpe todo -->
+            <button onclick="acceptAllCookies()" class="bg-black text-white px-10 py-2 rounded-full font-bold uppercase text-xs hover:bg-[#ff3c00] transition-all shadow-lg">Aceptar Todas</button>
         </div>
     </div>
 </div>
@@ -691,32 +745,30 @@ function loadGoogleMap() {
     const iframe = document.getElementById('google-map');
     
     if (iframe && mapPlaceholder) {
-        // Obtenemos la URL real del atributo data-src
         const mapSrc = iframe.getAttribute('data-src');
         if (mapSrc) {
             iframe.setAttribute('src', mapSrc);
-            
-            // Intercambiamos la vista: ocultamos el aviso y mostramos el mapa
             mapPlaceholder.style.display = 'none';
             iframe.style.display = 'block';
         }
     }
 }
 
-// --- ACCIONES DEL BANNER DE COOKIES ---
+// --- ACCIONES DEL BANNER Y MODAL DE COOKIES ---
 
-// 1. Botón RECHAZAR del Banner Principal
+// 1. Botón RECHAZAR / SOLO TÉCNICAS
 function rejectAllCookies() {
     const banner = document.getElementById('cookie-law-banner');
     if (banner) {
         banner.classList.add('hidden');
     }
     
-    // Guardamos la denegación de forma definitiva
+    // Guardamos la denegación en localStorage
     localStorage.setItem('candil_cookies_decision', 'true');
     localStorage.setItem('cookie_analytics_allowed', 'false');
+    localStorage.setItem('cookie_prefs_allowed', 'false'); // Añadido
     
-    // En lugar de recargar la página, forzamos por código que el mapa se bloquee visualmente
+    // Forzamos por código que el mapa se bloquee visualmente
     const mapPlaceholder = document.getElementById('map-placeholder');
     const iframe = document.getElementById('google-map');
     if (mapPlaceholder && iframe) {
@@ -725,16 +777,19 @@ function rejectAllCookies() {
         iframe.setAttribute('src', '');
     }
     
-    // Sincronizamos el interruptor del panel por si el usuario lo abre más tarde
+    // Sincronizamos los interruptores del panel por si se abre después
     const analyticsInput = document.getElementById('cookie_analytics');
-    if (analyticsInput) {
-        analyticsInput.checked = false;
-    }
+    const prefsInput = document.getElementById('cookie_prefs');
+    if (analyticsInput) analyticsInput.checked = false;
+    if (prefsInput) prefsInput.checked = false;
     
-    console.log("Cookies de terceros rechazadas y banner ocultado sin recarga.");
+    // CORRECCIÓN: Cerramos el modal de cookies si estaba abierto
+    toggleModal('modalCookies');
+    
+    console.log("Cookies de terceros rechazadas y modal cerrado.");
 }
 
-// 2. Botón ACEPTAR del Banner Principal
+// 2. Botón ACEPTAR TODAS
 function acceptAllCookies() {
     const banner = document.getElementById('cookie-law-banner');
     if (banner) {
@@ -744,32 +799,42 @@ function acceptAllCookies() {
     // Guardamos la aceptación global
     localStorage.setItem('candil_cookies_decision', 'true');
     localStorage.setItem('cookie_analytics_allowed', 'true');
-    localStorage.setItem('cookie_marketing_allowed', 'true');
+    localStorage.setItem('cookie_prefs_allowed', 'true'); // Añadido
     
-    console.log("Todas las cookies aceptadas.");
-    // Activamos el mapa inmediatamente sin obligar a recargar la web
+    // Sincronizamos los interruptores visuales del panel
+    const analyticsInput = document.getElementById('cookie_analytics');
+    const prefsInput = document.getElementById('cookie_prefs');
+    if (analyticsInput) analyticsInput.checked = true;
+    if (prefsInput) prefsInput.checked = true;
+
+    // Activamos el mapa inmediatamente
     loadGoogleMap();
+
+    // CORRECCIÓN: Cerramos el modal de cookies si estaba abierto
+    toggleModal('modalCookies');
+
+    console.log("Todas las cookies aceptadas y modal cerrado.");
 }
 
-// 3. Botón GUARDAR SELECCIÓN dentro del panel de configuración (modalOpcion)
+// 3. Botón GUARDAR SELECCIÓN
 function saveCustomCookies() {
     const banner = document.getElementById('cookie-law-banner');
     const analyticsChecked = document.getElementById('cookie_analytics')?.checked || false;
+    const prefsChecked = document.getElementById('cookie_prefs')?.checked || false; // Añadido
 
-    // SOLUCIÓN AL FALLO 1: Guardamos siempre la decisión obligatoria para cerrar el banner definitivamente
+    // Guardamos la decisión del usuario
     localStorage.setItem('candil_cookies_decision', 'true');
     localStorage.setItem('cookie_analytics_allowed', analyticsChecked ? 'true' : 'false');
-    localStorage.setItem('cookie_marketing_allowed', 'false'); // Forzamos false en marketing al no usarse
+    localStorage.setItem('cookie_prefs_allowed', prefsChecked ? 'true' : 'false'); // Añadido
 
-    // Ocultamos el banner usando la clase hidden de forma limpia
     if (banner) {
         banner.classList.add('hidden');
     }
     
-    // Cerramos el modal de configuración
-    toggleModal('modalOpcion');
+    // CORRECCIÓN: Ahora apunta a 'modalCookies' en vez de 'modalOpcion'
+    toggleModal('modalCookies');
     
-    // Si el usuario marcó las analíticas, cargamos el mapa. Si las desmarcó, nos aseguramos de limpiarlo
+    // Control del mapa según la selección de analíticas
     if (analyticsChecked) {
         loadGoogleMap();
     } else {
@@ -784,11 +849,13 @@ function saveCustomCookies() {
     
     console.log("Preferencias de privacidad guardadas correctamente.");
 }
+
 // --- COMPROBACIÓN INICIAL AL CARGAR LA PÁGINA ---
 (function checkCookieStatus() {
     const hasDecision = localStorage.getItem('candil_cookies_decision');
     const banner = document.getElementById('cookie-law-banner');
     const analyticsAllowed = localStorage.getItem('cookie_analytics_allowed');
+    const prefsAllowed = localStorage.getItem('cookie_prefs_allowed'); // Añadido
     
     if (banner) {
         if (hasDecision === 'true') {
@@ -798,16 +865,20 @@ function saveCustomCookies() {
         }
     }
 
-    // Si ya tenía el permiso analítico aceptado de antes, cargamos el mapa directamente
     if (analyticsAllowed === 'true') {
         window.addEventListener('DOMContentLoaded', loadGoogleMap);
     }
 
-    // Sincronizamos el interruptor visual del modal de configuración (eliminada lógica de marketing)
+    // Sincronizamos los checkboxes al cargar el DOM
     window.addEventListener('DOMContentLoaded', () => {
         const analyticsInput = document.getElementById('cookie_analytics');
+        const prefsInput = document.getElementById('cookie_prefs');
+        
         if (analyticsInput) {
             analyticsInput.checked = (analyticsAllowed === 'true');
+        }
+        if (prefsInput) {
+            prefsInput.checked = (prefsAllowed === 'true');
         }
     });
 })();
