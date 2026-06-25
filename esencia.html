@@ -119,10 +119,11 @@
             margin-bottom: 15px;
             letter-spacing: 2px; /* Un poco más de espacio entre letras */
         }
-        .header-esencia {
+	.header-esencia {
             padding: 60px 20px;
             text-align: center;
-            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('ELCANDIL14.png');
+            /* Se corrige la extensión y ruta a la imagen que pides */
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('ELCANDIL14.webp');
             background-size: cover;
             background-position: center;
         }
@@ -133,6 +134,7 @@
             color: white;
             text-shadow: var(--neon-glow);
             margin-bottom: 10px;
+            /* Se eliminan las propiedades background de aquí que causaban conflicto */
         }
 
         section {
