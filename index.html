@@ -15,27 +15,23 @@
     <meta property="og:url" content="https://elcandilparamo.github.io/index.html">
     <meta property="og:type" content="website">
 
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-    <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"></noscript>
-
     <link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
 
-    <link rel="stylesheet" href="css/tailwind.min.css">
+
 
     <style>
         :root {
             --neon-color: #ff3c00; 
             --neon-glow: 0 0 10px #ff3c00, 0 0 20px #ff3c00, 0 0 40px #ff3c00, 0 0 80px #ff3c00, 0 0 120px #ff3c00;
             --neon-glow-subtle: 0 0 5px #ff3c00, 0 0 10px #ff3c00, 0 0 15px #ff3c00;
-            --dark-bg: #0b132b;
-            --card-bg: #1c2541;
-	    --footer-bg: #070c1e;
-	    --text-light: #ffffff;
-            --text-muted: #e2e8f0;    /* Gris azulado claro para máxima legibilidad */
-            --accent-wood: #8b4513;				
+            --dark-bg: #0a0a0a;
+            --card-bg: #151515;
+            --text-light: #f5f5f5;
+            --accent-wood: #8b4513;
         }
 
         * {
@@ -59,7 +55,7 @@
             width: 100%;
             overflow: hidden;
             border-bottom: 3px solid var(--neon-color);
-            box-shadow: 0 4px 15px var(--neon-glow-subtle);
+            box-shadow: 0 4px 15px var(--neon-glow-subtle); /* Añade un sutil brillo al banner */
         }
 
         .banner-img {
@@ -94,30 +90,34 @@
         }
 
         nav a:hover {
-            opacity: 0.8;
+            opacity: 0.7;
         }
 
         /* --- CONTENIDO PRINCIPAL --- */
         .hero {
             padding: 80px 20px;
             text-align: center;
+            /* Aquí usamos la imagen del letrero como fondo del título */
             background: linear-gradient(rgba(10,10,10,0.8), rgba(10,10,10,0.8)), url('EL CANDIL.jpg');
             background-size: cover;
             background-position: center;
         }
 
         .hero h1 {
+            /* APLICAMOS LA FUENTE PERMANENT MARKER */
             font-family: 'Permanent Marker', cursive;
-            font-size: 5rem; 
-            text-transform: uppercase; 
-            color: white; 
+            font-size: 5rem; /* Aumentado ligeramente para mayor impacto con esta fuente */
+            text-transform: uppercase; /* Asegura mayúsculas para un look más "marker" */
+            color: white; /* El centro del neón a menudo parece blanco */
+            
+            /* APLICAMOS EL EFECTO NEÓN ROJO NARANJA */
             text-shadow: 
-                0 0 10px #fff, 
+                0 0 10px #fff, /* Brillo blanco interior sutil */
                 0 0 20px #fff,
-                var(--neon-glow); 
+                var(--neon-glow); /* Todo el brillo rojo naranja */
             
             margin-bottom: 15px;
-            letter-spacing: 2px; 
+            letter-spacing: 2px; /* Un poco más de espacio entre letras */
         }
         .header-esencia {
             padding: 60px 20px;
@@ -161,7 +161,7 @@
         .text-block p {
             margin-bottom: 15px;
             font-size: 1.1rem;
-            color: #e5e7eb; /* Accesibilidad mejorada (gris más claro sobre fondo oscuro) */
+            color: #ccc;
         }
 
         .image-frame {
@@ -179,6 +179,67 @@
         .image-frame:hover img {
             transform: scale(1.05);
         }
+        .rock-banner {
+            background: #111;
+            padding: 50px 20px;
+            text-align: center;
+            border-top: 2px solid #333;
+            border-bottom: 2px solid #333;
+            margin: 40px 0;
+        }
+
+        .rock-tag {
+            display: inline-block;
+            background: var(--neon-color);
+            padding: 5px 15px;
+            font-weight: bold;
+            transform: rotate(-2deg);
+            margin-bottom: 20px;
+        }
+
+        .details-grid {
+            max-width: 1200px;
+            margin: 40px auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            padding: 20px;
+        }
+
+        .detail-card {
+            background: var(--card-bg);
+            border-radius: 15px;
+            padding: 20px;
+            text-align: center;
+            border: 1px solid #333;
+        }
+
+        .detail-card img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            border-radius: 10px;
+            margin-bottom: 15px;
+        }
+
+        .signature {
+            font-family: 'Permanent Marker', cursive;
+            color: var(--neon-color);
+            margin-top: 10px;
+            display: block;
+        }
+
+
+        @media (max-width: 768px) {
+            .content-section { grid-template-columns: 1fr; }
+            .header-esencia h1 { font-size: 2.5rem; }
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+        }
 
         .card {
             background: #151515;
@@ -195,16 +256,12 @@
             margin-bottom: 15px;
         }
 
-        .card p {
-            color: #e5e7eb; /* Accesibilidad mejorada */
-        }
-
         /* --- FOOTER CON MAPA --- */
         footer {
             background: #000;
             padding: 50px 20px;
             border-top: 3px solid var(--neon-color);
-            box-shadow: 0 -4px 15px var(--neon-glow-subtle);
+            box-shadow: 0 -4px 15px var(--neon-glow-subtle); /* Brillo sutil hacia arriba */
         }
 
         .footer-container {
@@ -226,26 +283,35 @@
         .contact-info h3 {
             color: var(--neon-color);
             margin-bottom: 20px;
+            /* Opcional: Un ligero brillo neón al título del footer */
             text-shadow: var(--neon-glow-subtle);
         }
         .modal-content {
             max-height: 70vh;
             overflow-y: auto;
         }
-        #cookie-law-banner {
+	#cookie-law-banner {
             position: fixed;
             bottom: 0;
             left: 0;
             width: 100%;
             z-index: 9999;
         }
+	@keyframes bounce-slow {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .animate-bounce-slow {
+            animation: bounce-slow 3s infinite ease-in-out;
+        }
     </style>
 </head>
 <body>
 
     <div class="banner">
-        <div class="banner-img" style="background-image: url('ELCANDIL14.png');"></div>
-        <div class="banner-img" style="background-image: url('ELCANDIL7.jpeg');"></div>
+        <div class="banner-img" style="background-image: url('ELCANDIL14.webp');"></div>
+        <div class="banner-img" style="background-image: url('ELCANDIL7.webp');"></div>
     </div>
 
     <nav>
@@ -261,40 +327,40 @@
     </header>
 
     <section id="experiencia">
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div class="grid">
             <div class="card">
-                <img src="ELCANDIL17.jpeg" alt="Terraza de El Candil">
-                <h3 class="text-xl font-bold mb-2">La Terraza</h3>
+                <img src="ELCANDIL17.webp" alt="Terraza de El Candil">
+                <h3>La Terraza</h3>
                 <p>Ubicada frente al parque Álvarez Carballo, es el rincón perfecto para relajarse, mientras los niños juegan en el parque.</p>
             </div>
             <div class="card">
-                <img src="ELCANDIL9.jpeg" alt="Café en El Candil">
-                <h3 class="text-xl font-bold mb-2">Momentos Dulces</h3>
+                <img src="ELCANDIL9.webp" alt="Café en El Candil">
+                <h3>Momentos Dulces</h3>
                 <p>Nuestros cafés y bollería artesanal son el motor de cada mañana. No dejes de probar nuestro clásico rosco.</p>
             </div>
             <div class="card">
-                <img src="ELCANDIL4.jpeg" alt="Detalle interior El Candil">
-                <h3 class="text-xl font-bold mb-2">Calidez y Tradición</h3>
+                <img src="ELCANDIL4.webp" alt="Detalle interior El Candil">
+                <h3>Calidez y Tradición</h3>
                 <p>Un ambiente acogedor donde Jose y Ana te harán sentir como en casa, y podrás disfrutar tu estancia.</p>
             </div>
         </div>
     </section>
 
-<footer class="bg-gray-900 text-white pt-10 pb-6 border-t-4 border-[#ff3c00]" id="ubicacion">
+<footer class="bg-gray-900 text-white pt-10 pb-6 border-t-4 border-[##ff3c00]" id="ubicacion">
     <div class="footer-container">
         <div class="contact-info" style="text-align: center;">
             <h3>Contacto</h3>
             <p>📍 Calle la Vega 20</p>
             <p>24470 Páramo del Sil, León</p>
-            <p>Teléfono: 639212610</p>
-            <p>Email: <a href="mailto:elcandilparamodelsil@gmail.com" class="footer-link font-bold">elcandilparamodelsil@gmail.com</a></p>
+            <p>Telefono: 639212610</p>
+	    <p>Email: <a href="mailto:elcandilparamodelsil@gmail.com" class="footer-link">elcandilparamodelsil@gmail.com</a></p>
             
-            <div style="margin: 20px 0; display: flex; justify-content: center; align-items: center; gap: 12px;">
+	    <div style="margin: 20px 0; display: flex; justify-content: center; align-items: center; gap: 12px;">
                 <a href="https://www.facebook.com/share/18XBXVSbAK/?mibextid=wwXlfr" target="_blank" class="footer-link" style="text-decoration: none; display: flex; align-items: center; gap: 12px;" title="Síguenos en Facebook">
                     <span style="text-align: right; font-size: 0.9rem; line-height: 1.2; font-weight: bold; display: inline-block;">
                         Mantente al día<br>de nuestros eventos
                     </span>
-                    <span style="background-color: #1877F2; width: 42px; height: 42px; display: flex; align-items: center; justify-content: center; border-radius: 50%;">
+                    <span style="background-color: #1877F2; width: 42px; height: 42px; display: flex; align-items: center; justify-content: center; border-radius: 50%; transition: transform 0.3s ease;">
                         <i class="fa-brands fa-facebook-f" style="font-size: 1.5rem; color: #ffffff;"></i>
                     </span>
                 </a>
@@ -303,25 +369,25 @@
             <p><strong>Ubicación privilegiada:</strong></p>
             <p>Justo delante del Parque Infantil Álvarez Carballo.</p>
         </div>
-        <div class="map-container" id="map-wrapper" style="display: flex; justify-content: center; width: 100%; max-width: 600px; height: 300px; margin: 0 auto;">
-            <div id="map-placeholder" style="width: 100%; height: 100%; background: #111; border: 1px dashed #ff3c00; border-radius: 10px; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 20px; text-align: center;">
-                <i class="fa-solid fa-map-location-dot" style="color: #ff3c00; font-size: 3rem; margin-bottom: 15px;"></i>
-                <h4 style="color: white; font-weight: bold; margin-bottom: 10px; text-transform: uppercase;">Mapa Desactivado</h4>
-                <p style="color: #e5e7eb; font-size: 13px; max-width: 350px; margin-bottom: 15px;">
-                    Para visualizar el mapa interactivo de Google Maps, es necesario aceptar las cookies analíticas y de terceros.
-                </p>
-                <button onclick="acceptAllCookies()" class="footer-btn" style="background: #ff3c00; padding: 8px 20px; border-radius: 20px; font-size: 12px !important; color: white !important;">
-                    Activar Mapa y Cookies
-                </button>
-            </div>
-            <iframe id="google-map" data-src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2932.128717865664!2d-6.4913214!3d42.7019958!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd30ae31d36be4ad%3A0xe5f928e19cbe34!2sC.%20la%20Vega%2C%2020%2C%2024470%20P%C3%A1ramo%20del%20Sil%2C%20Le%C3%B3n!5e0!3m2!1ses!2ses!4v1710000000000!5m2!1ses!2ses" width="600" height="300" style="border:0; display: none; border-radius: 10px;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-        </div>
+    	<div class="map-container" id="map-wrapper" style="display: flex; justify-content: center; width: 100%; max-width: 600px; height: 300px; margin: 0 auto;">
+		<div id="map-placeholder" style="width: 100%; height: 100%; background: #111; border: 1px dashed #ff3c00; border-radius: 10px; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 20px; text-align: center;">
+        <i class="fa-solid fa-map-location-dot" style="color: #ff3c00; font-size: 3rem; margin-bottom: 15px;"></i>
+        <h4 style="color: white; font-weight: bold; margin-bottom: 10px; uppercase">Mapa Desactivado</h4>
+        <p style="color: #ccc; font-size: 12px; max-width: 350px; margin-bottom: 15px;">
+            Para visualizar el mapa interactivo de Google Maps, es necesario aceptar las cookies analíticas y de terceros.
+        </p>
+        <button onclick="acceptAllCookies()" class="footer-btn" style="background: #ff3c00; padding: 8px 20px; rounded-radius: 20px; border-radius: 20px; font-size: 11px !important;">
+            Activar Mapa y Cookies
+        </button>
+		</div>
+	<iframe id="google-map" data-src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2932.128717865664!2d-6.4913214!3d42.7019958!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd30ae31d36be4ad%3A0xe5f928e19cbe34!2sC.%20la%20Vega%2C%2020%2C%2024470%20P%C3%A1ramo%20del%20Sil%2C%20Le%C3%B3n!5e0!3m2!1ses!2ses!4v1710000000000!5m2!1ses!2ses" width="600" height="300" style="border:0; display: none; border-radius: 10px;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+	</div>
     </div>
 
     <style>
         .footer-btn {
-            color: #f5f5f5 !important; /* Texto claro de alto contraste sobre fondo negro */
-            font-size: 13px !important;  
+            color: #ffffff !important; /* Texto blanco */
+            font-size: 12px !important;  /* Un 20% más grande que el 10px original */
             background: none;
             border: none;
             cursor: pointer;
@@ -329,16 +395,8 @@
             font-weight: bold;
             transition: color 0.3s ease, text-shadow 0.3s ease;
         }
+        /* Efecto al pasar el cursor: cambia al rojo-naranja neón de la página */
         .footer-btn:hover {
-            color: #ff3c00 !important;
-            text-shadow: 0 0 10px #ff3c00, 0 0 20px #ff3c00;
-        }
-        .footer-link {
-            color: #ffffff !important;
-            text-decoration: none;
-            transition: color 0.3s ease, text-shadow 0.3s ease;
-        }
-        .footer-link:hover {
             color: #ff3c00 !important;
             text-shadow: 0 0 10px #ff3c00, 0 0 20px #ff3c00;
         }
@@ -356,24 +414,37 @@
         </div>
     </div>
 
-    <div style="text-align:center; margin-top:40px; font-size: 1rem;">
-        <a href="index.html" class="footer-link">© 2024 Bar El Candil.</a>
-        <p style="margin-top:4px; font-size: 1rem; color: #e5e7eb;">Programado para Jose y Ana.</p>
-    </div>
+<p style="text-align:center; margin-top:40px; font-size: 1rem; opacity: 0.8;">
+    <style>
+        .footer-link {
+            color: #ffffff !important;
+            text-decoration: none;
+            transition: color 0.3s ease, text-shadow 0.3s ease;
+        }
+        .footer-link:hover {
+            color: #ff3c00 !important;
+            text-shadow: 0 0 10px #ff3c00, 0 0 20px #ff3c00;
+        }
+    </style>
+	<p style="text-align:center; margin-top:40px; font-size: 1rem; opacity: 0.8;">
+	    <a href="index.html" class="footer-link">© 2024 Bar El Candil.</a></p>
+	<p style="text-align:center; margin-top:4px; font-size: 1rem; opacity: 0.8;">
+	    Programado para Jose y Ana.</p>
+
 </footer>
 
 <div id="modalLegal" class="fixed inset-0 bg-black bg-opacity-90 z-[100000] hidden flex items-center justify-center p-4">
-    <div class="bg-white text-gray-950 max-w-4xl w-full rounded-3xl border-4 border-[#ff3c00] shadow-2xl overflow-hidden">
-        <div class="p-4 border-b flex justify-between items-center bg-gray-100 rounded-t-3xl">
-            <h2 class="text-xl text-[#ff3c00] uppercase font-bold">Aviso Legal</h2>
-            <button onclick="toggleModal('modalLegal')" class="text-gray-600 hover:text-black text-2xl transition">×</button>
+    <div class="bg-white text-gray-800 max-w-4xl w-full rounded-3xl border-4 border-[#ff3c00] shadow-2xl overflow-hidden">
+        <div class="p-4 border-b flex justify-between items-center bg-gray-50 rounded-t-3xl">
+            <h2 class="font-crazy text-xl text-[#ff3c00] uppercase font-bold">Aviso Legal</h2>
+            <button onclick="toggleModal('modalLegal')" class="text-gray-400 hover:text-black text-2xl transition">×</button>
         </div>
         
-        <div class="p-6 md:p-8 text-sm space-y-4 text-justify modal-content overflow-y-auto text-gray-950" style="max-height: 65vh;">
+        <div class="p-6 md:p-8 text-xs space-y-3 text-justify modal-content overflow-y-auto" style="max-height: 65vh;">
             <div>
-                <h3 class="font-bold text-black uppercase border-b border-[#ff3c00] inline-block mb-1">1. Datos Identificativos</h3>
-                <p>En cumplimiento con el artículo 10 de la Ley 34/2002... se facilitan los siguientes datos:</p>
-                <div class="bg-gray-100 p-4 rounded-xl border border-gray-300 mt-2 space-y-1 text-black">
+                <h3 class="font-bold text-gray-900 uppercase border-b border-[#ff3c00] inline-block mb-1">1. Datos Identificativos</h3>
+                <p>En cumplimiento con el artículo 10 de la Ley 34/2002, de 11 de julio, de Servicios de la Sociedad de la Información y del Comercio Electrónico (LSSI-CE), se facilitan los siguientes datos del titular del sitio web:</p>
+                <div class="bg-gray-50 p-3 rounded-xl border border-gray-200 mt-1 space-y-0.5">
                     <p><strong>Titular:</strong> Ana Gancedo Fernández</p>
                     <p><strong>Denominación Comercial:</strong> Bar El Candil</p>
                     <p><strong>NIF:</strong> 71523831H</p>
@@ -382,84 +453,138 @@
                     <p><strong>Teléfono de contacto:</strong> 639212610</p>
                 </div>
             </div>
+
             <div>
-                <h3 class="font-bold text-black uppercase border-b border-[#ff3c00] inline-block mb-1">2. Propiedad Intelectual</h3>
-                <p>El titular, <strong>Ana Gancedo Fernández (Bar El Candil)</strong>, es propietario de todos los derechos de propiedad intelectual e industrial de este sitio web...</p>
+                <h3 class="font-bold text-gray-900 uppercase border-b border-[#ff3c00] inline-block mb-1">2. Propiedad Intelectual e Industrial</h3>
+                <p>El titular, <strong>Ana Gancedo Fernández (Bar El Candil)</strong>, es propietario de todos los derechos de propiedad intelectual e industrial de este sitio web, así como de los elementos contenidos en el mismo (imágenes, fotografías, logotipos, textos, estructura y diseño arquitectónico de la web, etc.). Queda expresamente prohibida la reproducción, distribución o modificación de la totalidad o parte de los contenidos de esta página con fines comerciales sin autorización previa por escrito.</p>
             </div>
+
             <div>
-                <h3 class="font-bold text-black uppercase border-b border-[#ff3c00] inline-block mb-1">3. Condiciones de Uso</h3>
-                <p>El acceso a este portal atribuye la condición de usuario, quien se compromete a hacer un uso adecuado de los contenidos de conformidad con la ley.</p>
+                <h3 class="font-bold text-gray-900 uppercase border-b border-[#ff3c00] inline-block mb-1">3. Condiciones de Uso y Exclusión de Responsabilidad</h3>
+                <p>El acceso a este portal atribuye la condición de usuario, quien se compromete a hacer un uso adecuado de los contenidos de conformidad con la ley. El titular no se hace responsable de los daños y perjuicios que pudieran ocasionar errores u omisiones en los contenidos, o la falta de disponibilidad temporal del portal por mantenimientos técnicos.</p>
+            </div>
+
+            <div>
+                <h3 class="font-bold text-gray-900 uppercase border-b border-[#ff3c00] inline-block mb-1">4. Enlaces a Terceros (Links)</h3>
+                <p>En el caso de que se incluuyan enlaces hacia otros sitios de Internet (como mapas interactivos de Google Maps o plataformas de Wikiloc), el titular no ejercerá ningún tipo de control sobre dichos sitios ni asumirá responsabilidad alguna por sus contenidos, funcionamiento o políticas de privacidad externas.</p>
+            </div>
+
+            <div>
+                <h3 class="font-bold text-gray-900 uppercase border-b border-[#ff3c00] inline-block mb-1">5. Legislación Aplicable y Jurisdicción</h3>
+                <p>La relación entre el titular del sitio web y el usuario se regirá por la normativa española vigente. Para la resolución de cualquier controversia, conflicto o reclamación que pudiera surgir en relación con el uso de este sitio web, ambas partes acuerdan someterse expresamente a la jurisdicción de los <strong>Juzgados y Tribunales de Ponferrada (León)</strong>, renunciando a cualquier otro fuero que pudiera corresponderles.</p>
             </div>
         </div>
-        <div class="p-3 text-center border-t bg-gray-100 rounded-b-3xl">
-            <button onclick="toggleModal('modalLegal')" class="bg-black text-white px-8 py-2 rounded-full font-bold uppercase text-xs hover:bg-[#ff3c00] transition-all shadow-lg">Cerrar</button>
+        
+        <div class="p-3 text-center border-t bg-gray-50 rounded-b-3xl">
+            <button onclick="toggleModal('modalLegal')" class="bg-black text-white px-8 py-1.5 rounded-full font-bold uppercase text-xs hover:bg-[#ff3c00] transition-all shadow-lg">Cerrar</button>
         </div>
     </div>
 </div>
 
 <div id="modalUso" class="fixed inset-0 bg-black bg-opacity-90 z-[100000] hidden flex items-center justify-center p-4">
-    <div class="bg-white text-gray-950 max-w-4xl w-full rounded-3xl border-4 border-[#ff3c00] shadow-2xl overflow-hidden">
-        <div class="p-4 border-b flex justify-between items-center bg-gray-100 rounded-t-3xl">
-            <h2 class="text-xl text-[#ff3c00] uppercase font-bold">Condiciones de Uso</h2>
-            <button onclick="toggleModal('modalUso')" class="text-gray-600 hover:text-black text-2xl transition">×</button>
+    <div class="bg-white text-gray-800 max-w-4xl w-full rounded-3xl border-4 border-[#ff3c00] shadow-2xl overflow-hidden">
+        <div class="p-4 border-b flex justify-between items-center bg-gray-50 rounded-t-3xl">
+            <h2 class="font-crazy text-xl text-[#ff3c00] uppercase font-bold">Condiciones de Uso</h2>
+            <button onclick="toggleModal('modalUso')" class="text-gray-400 hover:text-black text-2xl transition">×</button>
         </div>
         
-        <div class="p-6 md:p-8 text-sm space-y-4 text-justify modal-content overflow-y-auto text-gray-950" style="max-height: 65vh;">
+        <div class="p-6 md:p-8 text-xs space-y-3 text-justify modal-content overflow-y-auto" style="max-height: 65vh;">
             <div>
-                <h3 class="font-bold text-black uppercase border-b border-[#ff3c00] inline-block mb-1">1. Objeto y Ámbito de Aplicación</h3>
-                <p>Las presentes condiciones regulan el acceso y uso de la web oficial de <strong>Bar El Candil</strong>.</p>
+                <h3 class="font-bold text-gray-900 uppercase border-b border-[#ff3c00] inline-block mb-1">1. Objeto y Ámbito de Aplicación</h3>
+                <p>Las presentes condiciones regulan el acceso y uso de la web oficial de <strong>Bar El Candil</strong>. Al navegar por este sitio, el usuario acepta de manera íntegra estas disposiciones, orientadas a informar sobre los servicios, localización y esencia de nuestro establecimiento en Páramo del Sil.</p>
             </div>
+
             <div>
-                <h3 class="font-bold text-black uppercase border-b border-[#ff3c00] inline-block mb-1">2. Obligaciones del Usuario</h3>
-                <p>El usuario se compromete a hacer un uso lícito y responsable de los contenidos expuestos en este portal.</p>
+                <h3 class="font-bold text-gray-900 uppercase border-b border-[#ff3c00] inline-block mb-1">2. Obligaciones del Usuario</h3>
+                <p>El usuario se compromete a hacer un uso lícito y responsable de los contenidos expuestos en este portal. Queda prohibido utilizar la información de contacto para el envío de publicidad no solicitada (SPAM), dañar la infraestructura tecnológica de la web o reproducir imágenes de nuestras instalaciones sin autorización por escrito.</p>
+            </div>
+
+            <div>
+                <h3 class="font-bold text-gray-900 uppercase border-b border-[#ff3c00] inline-block mb-1">3. Responsabilidad por Contenidos y Terceros</h3>
+                <p>El titular realiza los máximos esfuerzos para garantizar que la información de la web sea correcta. No obstante, no se responsabiliza de interrupciones puntuales del servicio por mantenimiento técnico ni de cambios de última hora en la oferta de productos. Tampoco asume responsabilidad sobre el funcionamiento de herramientas externas enlazadas (como Google Maps o Wikiloc).</p>
+            </div>
+
+            <div>
+                <h3 class="font-bold text-gray-900 uppercase border-b border-[#ff3c00] inline-block mb-1">4. Normas de Convivencia y Derecho de Admisión</h3>
+                <p>La información contenida en esta web refleja el ambiente familiar de nuestro local físico. Recordamos que, tanto en nuestra terraza frente al parque infantil como en el interior, se aplican estrictamente las normativas vigentes de hostelería de Castilla y León, reservándose el derecho de admisión para garantizar la tranquilidad y seguridad de todos los clientes.</p>
+            </div>
+
+            <div>
+                <h3 class="font-bold text-gray-900 uppercase border-b border-[#ff3c00] inline-block mb-1">5. Modificaciones de las Condiciones</h3>
+                <p>La dirección del establecimiento se reserva la facultad de modificar o actualizar estas Condiciones de Uso en cualquier momento para adaptarlas a novedades legislativas o a cambios en el propio funcionamiento del bar.</p>
             </div>
         </div>
-        <div class="p-3 text-center border-t bg-gray-100 rounded-b-3xl">
-            <button onclick="toggleModal('modalUso')" class="bg-black text-white px-8 py-2 rounded-full font-bold uppercase text-xs hover:bg-[#ff3c00] transition-all shadow-lg">Aceptar y cerrar</button>
+        
+        <div class="p-3 text-center border-t bg-gray-50 rounded-b-3xl">
+            <button onclick="toggleModal('modalUso')" class="bg-black text-white px-8 py-1.5 rounded-full font-bold uppercase text-xs hover:bg-[#ff3c00] transition-all shadow-lg">Aceptar y cerrar</button>
         </div>
     </div>
 </div>
 
 <div id="modalPrivacidad" class="fixed inset-0 bg-black bg-opacity-90 z-[100000] hidden flex items-center justify-center p-4">
-    <div class="bg-white text-gray-950 max-w-4xl w-full rounded-3xl border-4 border-[#ff3c00] shadow-2xl overflow-hidden">
-        <div class="p-4 border-b flex justify-between items-center bg-gray-100 rounded-t-3xl">
-            <h2 class="text-xl text-[#ff3c00] uppercase font-bold">Política de Privacidad</h2>
-            <button onclick="toggleModal('modalPrivacidad')" class="text-gray-600 hover:text-black text-2xl transition">×</button>
+    <div class="bg-white text-gray-800 max-w-4xl w-full rounded-3xl border-4 border-[#ff3c00] shadow-2xl overflow-hidden">
+        <div class="p-4 border-b flex justify-between items-center bg-gray-50 rounded-t-3xl">
+            <h2 class="font-crazy text-xl text-[#ff3c00] uppercase font-bold">Política de Privacidad</h2>
+            <button onclick="toggleModal('modalPrivacidad')" class="text-gray-400 hover:text-black text-2xl transition">×</button>
         </div>
         
-        <div class="p-6 md:p-8 text-sm space-y-4 text-justify modal-content overflow-y-auto text-gray-950" style="max-height: 65vh;">
-            <div class="bg-gray-100 border border-gray-300 rounded-xl overflow-hidden mt-1">
-                <div class="bg-gray-300 p-2 font-bold text-center uppercase text-xs tracking-widest text-gray-800">Protección de Datos (Resumen Informativo)</div>
-                <table class="w-full text-sm text-black">
-                    <tr class="border-b border-gray-300"><td class="p-3 font-bold bg-gray-200 w-1/4">Responsable</td><td class="p-3"><strong>Ana Gancedo Fernández</strong> (NIF: 71523831H)</td></tr>
-                    <tr class="border-b border-gray-300"><td class="p-3 font-bold bg-gray-200">Finalidad</td><td class="p-3">Garantizar las funciones técnicas esenciales de la web.</td></tr>
-                    <tr class="border-b border-gray-300"><td class="p-3 font-bold bg-gray-200">Legitimación</td><td class="p-3">Consentimiento explícito del usuario.</td></tr>
+        <div class="p-6 md:p-8 text-xs space-y-3 text-justify modal-content overflow-y-auto" style="max-height: 65vh;">
+            <div class="bg-gray-50 border border-gray-200 rounded-xl overflow-hidden mt-1">
+                <div class="bg-gray-200 p-1.5 font-bold text-center uppercase text-[10px] tracking-widest text-gray-700">Protección de Datos (Resumen Informativo)</div>
+                <table class="w-full text-[11px]">
+                    <tr class="border-b border-gray-200"><td class="p-2 font-bold bg-gray-100 w-1/4">Responsable</td><td class="p-2"><strong>Ana Gancedo Fernández</strong> (NIF: 71523831H)</td></tr>
+                    <tr class="border-b border-gray-200"><td class="p-2 font-bold bg-gray-100 w-1/4">Nombre Comercial</td><td class="p-2">Bar El Candil</td></tr>
+                    <tr class="border-b border-gray-200"><td class="p-2 font-bold bg-gray-100">Finalidad</td><td class="p-2">Garantizar las funciones técnicas esenciales del sitio web y permitir herramientas interactivas (mapas).</td></tr>
+                    <tr class="border-b border-gray-200"><td class="p-2 font-bold bg-gray-100">Legitimación</td><td class="p-2">Consentimiento explícito del usuario al parametrizar sus opciones de navegación.</td></tr>
+                    <tr class="border-b border-gray-200"><td class="p-2 font-bold bg-gray-100">Destinatarios</td><td class="p-2">No se ceden datos personales a terceros. Google y Wikiloc procesan datos técnicos según sus respectivas políticas.</td></tr>
+                    <tr><td class="p-2 font-bold bg-gray-100">Derechos</td><td class="p-2">Acceso, rectificación y supresión de datos revocando o eliminando las cookies en el navegador.</td></tr>
                 </table>
             </div>
+
+            <div>
+                <h3 class="font-bold text-gray-900 uppercase border-b border-[#ff3c00] inline-block mb-1">1. Responsable del Tratamiento</h3>
+                <p>El responsable legal del tratamiento de los datos de esta web es <strong>Ana Gancedo Fernández</strong>, con NIF <strong>71523831H</strong>, titular de la marca comercial <strong>Bar El Candil</strong> y con domicilio físico situado en la Calle la Vega 20, 24470 Páramo del Sil, León (España).</p>
+            </div>
+
+            <div>
+                <h3 class="font-bold text-gray-900 uppercase border-b border-[#ff3c00] inline-block mb-1">2. Datos Recigidos y Finalidad</h3>
+                <p>Este sitio web es de carácter estrictamente informativo y no dispone de formularios de registro, contacto informatizado ni pasarelas de pago. Únicamente se procesan datos técnicos automatizados y anónimos (como cookies de sesión) con el fin de garantizar una correcta visualización estructural.</p>
+            </div>
+
+            <div>
+                <h3 class="font-bold text-gray-900 uppercase border-b border-[#ff3c00] inline-block mb-1">3. Enlaces y Servicios de Terceros</h3>
+                <p>Se integran herramientas de mapas interactivos como <strong>Google Maps</strong> y <strong>Wikiloc</strong> para facilitar la localización del establecimiento y sugerir rutas de senderismo. Al interactuar con dichos elementos, estos proveedores externos pueden recopilar información técnica (como la dirección IP). Le recomendamos revisar las políticas de privacidad de Google y Wikiloc.</p>
+            </div>
+
+            <div>
+                <h3 class="font-bold text-gray-900 uppercase border-b border-[#ff3c00] inline-block mb-1">4. Conservación y Derechos</h3>
+                <p>Este sitio no almacena historiales de usuarios ni crea perfiles comerciales automáticos. Usted mantiene todos sus derechos conforme al RGPD y puede revocar sus consentimientos en cualquier momento eliminando el historial de cookies guardado desde los ajustes de privacidad de su navegador web.</p>
+            </div>
         </div>
-        <div class="p-3 text-center border-t bg-gray-100 rounded-b-3xl">
-            <button onclick="toggleModal('modalPrivacidad')" class="bg-black text-white px-10 py-2 rounded-full font-bold uppercase text-xs hover:bg-[#ff3c00] transition-all shadow-lg">Entendido</button>
+        
+        <div class="p-3 text-center border-t bg-gray-50 rounded-b-3xl">
+            <button onclick="toggleModal('modalPrivacidad')" class="bg-black text-white px-10 py-1.5 rounded-full font-bold uppercase text-xs hover:bg-[#ff3c00] transition-all shadow-lg">Entendido</button>
         </div>
     </div>
 </div>
 
-<div id="cookie-law-banner" class="fixed bottom-0 left-0 w-full z-[9999] p-4 hidden">
-    <div class="max-w-4xl mx-auto bg-black border border-[#ff3c00]/40 rounded-2xl shadow-[0_0_30px_rgba(0,0,0,0.9)] p-6 md:p-8">
+<div id="cookie-law-banner" class="fixed bottom-0 left-0 w-full z-[9999] p-4 transform transition-translate duration-500 hidden">
+    <div class="max-w-4xl mx-auto bg-black border border-[#ff3c00]/30 rounded-2xl shadow-[0_0_30px_rgba(0,0,0,0.8)] p-6 md:p-8 backdrop-blur-md">
         <div class="flex flex-col md:flex-row items-center justify-between gap-6">
             <div class="text-center md:text-left">
-                <h3 class="text-[#ff3c00] font-bold text-xl mb-2">¿UNAS COOKIES RECIÉN HORNEADAS EN EL CANDIL?</h3>
-                <p class="text-gray-200 text-sm leading-relaxed">
-                    Utilizamos cookies propias y de terceros para que tu experiencia en nuestra web sea óptima y para habilitar herramientas interactivas.
+                <h3 class="text-[#ff3c00] font-marker text-xl mb-2">¿UNAS COOKIES RECIÉN HORNEADAS EN EL CANDIL?</h3>
+                <p class="text-gray-300 text-sm leading-relaxed">
+                    Utilizamos cookies propias y de terceros para que tu experiencia en nuestra web sea óptima y para habilitar herramientas interactivas (mapas y rutas). Puedes aceptar todas las cookies, rechazarlas o configurar tus preferencias de forma detallada.
                 </p>
             </div>
             <div class="flex flex-wrap justify-center gap-3 shrink-0">
-                <button onclick="toggleModal('modalCookies')" class="bg-transparent text-gray-200 border border-gray-400 px-5 py-3 rounded-xl font-bold uppercase text-xs hover:bg-gray-900 transition-all">
+                <button onclick="toggleModal('modalCookies')" class="bg-transparent text-gray-400 border border-gray-600 px-5 py-3 rounded-xl font-bold uppercase text-xs hover:bg-gray-900 hover:text-white transition-all">
                     CONFIGURAR
                 </button>
-                <button onclick="rejectAllCookies()" class="bg-gray-800 text-gray-100 px-6 py-3 rounded-xl font-bold uppercase text-xs hover:bg-gray-700 transition-all">
+                <button onclick="rejectAllCookies()" class="bg-gray-800 text-gray-200 px-6 py-3 rounded-xl font-bold uppercase text-xs hover:bg-gray-700 transition-all">
                     RECHAZAR
                 </button>
-                <button onclick="acceptAllCookies()" class="bg-[#ff3c00] text-white px-6 py-3 rounded-xl font-bold uppercase text-xs hover:scale-105 transition-all">
+                <button onclick="acceptAllCookies()" class="bg-[#ff3c00] text-white px-6 py-3 rounded-xl font-bold uppercase text-xs hover:scale-105 transition-all shadow-[0_0_15px_rgba(255,60,0,0.4)]">
                     ACEPTAR
                 </button>
             </div>
@@ -468,70 +593,167 @@
 </div>
 
 <div id="modalCookies" class="fixed inset-0 bg-black bg-opacity-90 z-[100000] hidden flex items-center justify-center p-4">
-    <div class="bg-white text-gray-950 max-w-4xl w-full rounded-3xl border-4 border-[#ff3c00] shadow-2xl overflow-hidden">
-        <div class="p-6 border-b flex justify-between items-center bg-gray-100 rounded-t-3xl">
-            <h2 class="text-2xl font-bold text-[#ff3c00] uppercase">Política y Configuración de Cookies</h2>
-            <button onclick="toggleModal('modalCookies')" class="text-gray-600 hover:text-black text-3xl transition">×</button>
+    <div class="bg-white text-gray-800 max-w-4xl w-full rounded-3xl border-4 border-[#ff3c00] shadow-2xl overflow-hidden">
+        
+        <div class="p-6 border-b flex justify-between items-center bg-gray-50 rounded-t-3xl">
+            <h2 class="font-crazy text-2xl text-[#ff3c00] uppercase">Política y Configuración de Cookies</h2>
+            <button onclick="toggleModal('modalCookies')" class="text-gray-400 hover:text-black text-3xl transition" aria-label="Cerrar panel de cookies">×</button>
         </div>
         
-        <div class="p-6 md:p-10 text-sm space-y-4 text-justify modal-content overflow-y-auto text-gray-950" style="max-height: 70vh;">
-            <div class="bg-gray-100 border-2 border-gray-300 rounded-xl overflow-hidden">
-                <table class="w-full text-sm text-black">
-                    <tr class="border-b border-gray-300"><td class="p-3 font-bold bg-gray-200 w-1/3">Responsable</td><td class="p-3"><strong>Ana Gancedo Fernández</strong></td></tr>
-                    <tr class="border-b border-gray-300"><td class="p-3 font-bold bg-gray-200">Finalidad</td><td class="p-3">Garantizar el funcionamiento técnico y mapas.</td></tr>
+        <div class="p-6 md:p-10 text-sm space-y-2 text-justify modal-content overflow-y-auto" style="max-height: 70vh;">
+            
+            <h3 class="font-bold text-gray-900 uppercase border-b-2 border-[#ff3c00] inline-block mb-1">1. Informacion Basica</h3>
+            <div class="bg-gray-50 border-2 border-gray-200 rounded-xl overflow-hidden">
+                <div class="bg-gray-200 p-2 font-bold text-center uppercase text-xs tracking-widest text-gray-700">Información Básica sobre Cookies</div>
+                <table class="w-full text-xs">
+                    <tr class="border-b border-gray-200">
+                        <td class="p-3 font-bold bg-gray-100 w-1/3">Responsable</td>
+                        <td class="p-3"><strong>Ana Gancedo Fernández</strong></td>
+                    </tr>
+                    <tr class="border-b border-gray-200">
+                        <td class="p-3 font-bold bg-gray-100 w-1/3">Nombre Comercial</td>
+                        <td class="p-3"><strong>El Candil</strong></td>
+                    </tr>
+                    <tr class="border-b border-gray-200">
+                        <td class="p-3 font-bold bg-gray-100">Finalidad</td>
+                        <td class="p-3">Garantizar el funcionamiento técnico del sitio web y permitir la visualización de herramientas interactivas externas (como el mapa de ubicación y mapas de rutas).</td>
+                    </tr>
+                    <tr>
+                        <td class="p-3 font-bold bg-gray-100">Gestión</td>
+                        <td class="p-3">Puede marcar sus preferencias a continuación en el Panel de Configuración antes de guardar su elección.</td>
+                    </tr>
                 </table>
             </div>
 
-            <div class="space-y-3 bg-gray-100 p-4 rounded-xl border border-gray-300 text-black">
-                <h4 class="font-bold uppercase text-xs tracking-wider border-b pb-1 mb-1">Panel de Configuración Granular</h4>
-                <div class="flex items-start justify-between gap-4 p-3 bg-white rounded-lg border">
-                    <div>
-                        <span class="font-bold text-sm text-gray-900 uppercase">1. Cookies Técnicas</span>
-                        <p class="text-xs text-gray-600">Esenciales para el funcionamiento. No se pueden desactivar.</p>
+            <h3 class="font-bold text-gray-900 uppercase border-b-2 border-[#ff3c00] inline-block mb-1">2. Configuracion de Cookies</h3>
+            <div class="space-y-2 bg-gray-50 p-4 rounded-xl border border-gray-200">
+                <h4 class="font-bold text-gray-900 uppercase text-xs tracking-wider border-b pb-1 mb-1">Panel de Configuración Granular</h4>
+                
+                <div class="flex items-start justify-between gap-4 p-2 bg-white rounded-lg border">
+                    <div class="space-y-1">
+                        <span class="font-bold text-xs text-gray-900 uppercase">1. Cookies Técnicas e Imperativas</span>
+                        <p class="text-xs text-gray-500">Esenciales para que la web funcione de manera correcta (recordar si has aceptado o rechazado las cookies, navegación básica, seguridad). No se pueden desactivar.</p>
                     </div>
-                    <span class="text-xs font-bold text-green-700 bg-green-100 px-3 py-1 rounded-full uppercase border border-green-300 select-none">Siempre Activas</span>
+                    <span class="text-xs font-bold text-green-600 bg-green-50 px-3 py-1 rounded-full uppercase border border-green-200 select-none shrink-0">Siempre Activas</span>
                 </div>
-                <div class="flex items-start justify-between gap-4 p-3 bg-white rounded-lg border">
-                    <div>
-                        <label for="cookie_analytics" class="font-bold text-sm text-gray-900 uppercase cursor-pointer">2. Cookies analíticas y de terceros</label>
-                        <p class="text-xs text-gray-600">Necesarias para habilitar herramientas como Google Maps.</p>
+
+                <div class="flex items-start justify-between gap-4 p-2 bg-white rounded-lg border">
+                    <div class="space-y-1">
+                        <label for="cookie_analytics" class="font-bold text-xs text-gray-900 uppercase cursor-pointer">2. Cookies analíticas y de terceros</label>
+                        <p class="text-xs text-gray-500">Necesarias para habilitar herramientas interactivas externas en la web, tales como el mapa de Google Maps del footer y los mapas de rutas proporcionados por Wikiloc.</p>
                     </div>
-                    <input type="checkbox" id="cookie_analytics" class="w-5 h-5 accent-emerald-600 cursor-pointer rounded mt-1 shrink-0">
+                    <input type="checkbox" id="cookie_analytics" class="w-5 h-5 accent-[#40E0D0] cursor-pointer rounded mt-1 shrink-0" aria-label="Permitir cookies analíticas">
+                </div>
+
+                <div class="flex items-start justify-between gap-4 p-2 bg-white rounded-lg border">
+                    <div class="space-y-1">
+                        <label for="cookie_prefs" class="font-bold text-xs text-gray-900 uppercase cursor-pointer">3. Cookies de Personalización o Preferencias</label>
+                        <p class="text-xs text-gray-500">Utilizadas para recordar opciones de visualización del usuario y mantener la persistencia de elementos estéticos de la interfaz.</p>
+                    </div>
+                    <input type="checkbox" id="cookie_prefs" class="w-5 h-5 accent-[#40E0D0] cursor-pointer rounded mt-1 shrink-0" aria-label="Permitir cookies de personalización">
                 </div>
             </div>
+
+            <h3 class="font-bold text-gray-900 uppercase border-b-2 border-[#ff3c00] inline-block mb-1">3. Inventario Técnico de Cookies</h3>
+            <div class="overflow-x-auto">
+                <table class="w-full text-left text-xs border border-gray-200 table-fixed">
+                    <thead>
+                        <tr class="bg-gray-100 border-b border-gray-200">
+                            <th class="p-2 font-bold w-1/4">Identificador</th>
+                            <th class="p-2 font-bold w-1/6">Proveedor</th>
+                            <th class="p-2 font-bold w-1/2">Finalidad</th>
+                            <th class="p-2 font-bold w-1/12">Duración</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="border-b bg-gray-50/50">
+                            <td class="p-2 font-mono text-gray-600 break-words">candil_cookies_decision<br>cookie_analytics_allowed<br>cookie_prefs_allowed</td>
+                            <td class="p-2 text-gray-700 break-words">Propio</td>
+                            <td class="p-2 text-gray-700"><span class="text-[10px] font-bold text-gray-500 uppercase mr-1">[Técnica]</span> Almacenar de forma local el estado de consentimiento de privacidad seleccionado por el visitante para evitar que el banner de advertencia vuelva a desplegarse de manera intrusiva en las siguientes sesiones de navegación dentro del sitio web.</td>
+                            <td class="p-2 text-gray-700">1 año</td>
+                        </tr>
+                        <tr class="border-b">
+                            <td class="p-2 font-mono text-gray-600 break-words">_ga / _gid<br>AWSELB / JSESSIONID</td>
+                            <td class="p-2 text-gray-700 break-words">Wikiloc</td>
+                            <td class="p-2 text-gray-700"><span class="text-[10px] font-bold text-purple-500 uppercase mr-1">[Terceros]</span> Cookies técnicas, analíticas y de balanceo de carga requeridas externamente por el proveedor de mapas Wikiloc. Permiten el renderizado correcto, la carga fluida de las rutas de senderismo en el mapa interactivo y la recopilación de estadísticas agregadas de uso.</td>
+                            <td class="p-2 text-gray-700">Sesión a 2 años</td>
+                        </tr>
+                        <tr class="border-b">
+                            <td class="p-2 font-mono text-gray-600 break-words">NID / AEC / /_Secure-ENID</td>
+                            <td class="p-2 text-gray-700 break-words">Google</td>
+                            <td class="p-2 text-gray-700"><span class="text-[10px] font-bold text-purple-500 uppercase mr-1">[Terceros]</span> Cookies vinculadas a la inserción del mapa interactivo de Google Maps en el pie de página. Se utilizan para recordar configuraciones del usuario (como el nivel de zoom o idioma) y prevenir actividades fraudulentas para garantizar la seguridad del elemento embebido.</td>
+                            <td class="p-2 text-gray-700">6 meses</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <h3 class="font-bold text-gray-900 uppercase border-b-2 border-[#FF3C00] inline-block mb-1">4. Revocación y Configuración Alternativa</h3>
+            <p>Usted puede modificar o retirar sus consentimientos directamente desde los selectores de este panel en cualquier momento. Asimismo, la práctica totalidad de navegadores del mercado permiten bloquear, restringir o eliminar de raíz el histórico de cookies desde sus apartados de Configuración de Seguridad o Privacidad.</p>
+            <p class="mt-1">Para ampliar detalles sobre el tratamiento general de su información personal, acceda a nuestra <a href="#" onclick="toggleModal('modalCookies'); toggleModal('modalPrivacidad'); return false;" class="text-[#40E0D0] underline font-bold">Política de Privacidad</a> o contacte mediante: <a href="mailto:elcandilparamodelsil@gmail.com" class="hover:text-[#40E0D0] transition">elcandilparamodelsil@gmail.com.</a></p>
         </div>
         
-        <div class="p-4 text-center border-t bg-gray-100 rounded-b-3xl flex flex-wrap justify-center gap-4">
-            <button onclick="rejectAllCookies()" class="bg-gray-300 text-gray-800 px-6 py-2 rounded-full font-bold uppercase text-xs hover:bg-[#ff3c00] hover:text-white transition-all">Solo Técnicas</button>
-            <button onclick="saveCustomCookies()" class="bg-gray-600 text-white px-6 py-2 rounded-full font-bold uppercase text-xs hover:bg-[#ff3c00] transition-all">Guardar Selección</button>
-            <button onclick="acceptAllCookies()" class="bg-black text-white px-10 py-2 rounded-full font-bold uppercase text-xs hover:bg-[#ff3c00] transition-all">Aceptar Todas</button>
+        <div class="p-4 text-center border-t bg-gray-50 rounded-b-3xl flex flex-wrap justify-center gap-2 md:gap-4">
+            <button onclick="rejectAllCookies()" class="bg-gray-300 text-gray-700 px-6 py-2 rounded-full font-bold uppercase text-xs hover:bg-[#ff3c00] transition-all shadow-md hover:text-white">Solo Técnicas</button>
+            <button onclick="saveCustomCookies()" class="bg-gray-600 text-white px-6 py-2 rounded-full font-bold uppercase text-xs hover:bg-[#ff3c00] transition-all shadow-md">Guardar Selección</button>
+            <button onclick="acceptAllCookies()" class="bg-black text-white px-10 py-2 rounded-full font-bold uppercase text-xs hover:bg-[#ff3c00] transition-all shadow-lg">Aceptar Todas</button>
         </div>
     </div>
 </div>
 
 <script>
+// --- CONTROL DE MODALES (ABRIR / CERRAR) ---
 function toggleModal(id) {
     const modal = document.getElementById(id);
     if (modal) {
         modal.classList.toggle('hidden');
-        document.body.style.overflow = !modal.classList.contains('hidden') ? 'hidden' : 'auto';
+        if (!modal.classList.contains('hidden')) {
+            document.body.style.overflow = 'hidden'; 
+        } else {
+            document.body.style.overflow = 'auto';   
+        }
     }
 }
 
+// --- FUNCIÓN PARA CARGAR TODOS LOS MAPAS (WIKILOC + GOOGLE MAPS) ---
 function loadAllMaps() {
     try {
+        // 1. Cargar Google Map (Footer)
         const mapPlaceholder = document.getElementById('map-placeholder');
         const googleIframe = document.getElementById('google-map');
         if (googleIframe && mapPlaceholder) {
-            googleIframe.setAttribute('src', googleIframe.getAttribute('data-src'));
-            mapPlaceholder.style.display = 'none';
-            googleIframe.style.display = 'block';
+            const mapSrc = googleIframe.getAttribute('data-src');
+            if (mapSrc) {
+                googleIframe.setAttribute('src', mapSrc);
+                mapPlaceholder.style.display = 'none';
+                googleIframe.style.display = 'block';
+            }
         }
-    } catch (e) { console.error(e); }
+
+        // 2. Cargar Wikiloc
+        const iframesWikiloc = document.querySelectorAll('.wikiloc-iframe');
+        const placeholdersWikiloc = document.querySelectorAll('[class^="wikiloc-placeholder"]');
+        
+        placeholdersWikiloc.forEach(place => {
+            place.style.display = 'none';
+        });
+
+        iframesWikiloc.forEach(iframe => {
+            iframe.style.display = 'block';
+            if (!iframe.getAttribute('src') || iframe.getAttribute('src') === 'about:blank' || iframe.getAttribute('src') === '') {
+                const realSrc = iframe.getAttribute('data-src');
+                if (realSrc) iframe.setAttribute('src', realSrc);
+            }
+        });
+    } catch (e) {
+        console.error("Error al cargar los mapas:", e);
+    }
 }
 
+// --- FUNCIÓN PARA BLOQUEAR TODOS LOS MAPAS Y MOSTRAR PLACEHOLDERS ---
 function unloadAllMaps() {
     try {
+        // 1. Bloquear Google Map (Footer)
         const mapPlaceholder = document.getElementById('map-placeholder');
         const googleIframe = document.getElementById('google-map');
         if (mapPlaceholder && googleIframe) {
@@ -539,46 +761,150 @@ function unloadAllMaps() {
             googleIframe.style.display = 'none';
             googleIframe.setAttribute('src', '');
         }
-    } catch (e) { console.error(e); }
+
+        // 2. Bloquear Wikiloc
+        const iframesWikiloc = document.querySelectorAll('.wikiloc-iframe');
+        const placeholdersWikiloc = document.querySelectorAll('[class^="wikiloc-placeholder"]');
+        
+        placeholdersWikiloc.forEach(place => {
+            place.style.display = 'flex';
+        });
+
+        iframesWikiloc.forEach(iframe => {
+            iframe.style.display = 'none';
+            iframe.setAttribute('src', '');
+        });
+    } catch (e) {
+        console.error("Error al descargar los mapas:", e);
+    }
 }
 
+// --- ACCIÓN DIRECTA DESDE EL BOTÓN DEL MAPA ---
+function activateMapsDirectly() {
+    acceptAllCookies();
+}
+
+// --- ACCIONES DEL BANNER Y MODAL DE COOKIES ---
+
+// 1. Botón RECHAZAR / SOLO TÉCNICAS
 function rejectAllCookies() {
-    document.getElementById('cookie-law-banner')?.classList.add('hidden');
+    const banner = document.getElementById('cookie-law-banner');
+    if (banner) {
+        banner.classList.add('hidden');
+    }
+    
     localStorage.setItem('candil_cookies_decision', 'true');
     localStorage.setItem('cookie_analytics_allowed', 'false');
+    localStorage.setItem('cookie_prefs_allowed', 'false'); 
+    
+    // Bloqueamos todo
     unloadAllMaps();
-    toggleModal('modalCookies');
+    
+    const analyticsInput = document.getElementById('cookie_analytics');
+    const prefsInput = document.getElementById('cookie_prefs');
+    if (analyticsInput) analyticsInput.checked = false;
+    if (prefsInput) prefsInput.checked = false;
+    
+    const modal = document.getElementById('modalCookies');
+    if (modal && !modal.classList.contains('hidden')) {
+        toggleModal('modalCookies');
+    }
+    
+    console.log("Cookies de terceros rechazadas y mapas bloqueados.");
 }
 
+// 2. Botón ACEPTAR TODAS
 function acceptAllCookies() {
-    document.getElementById('cookie-law-banner')?.classList.add('hidden');
+    const banner = document.getElementById('cookie-law-banner');
+    if (banner) {
+        banner.classList.add('hidden');
+    }
+    
     localStorage.setItem('candil_cookies_decision', 'true');
     localStorage.setItem('cookie_analytics_allowed', 'true');
+    localStorage.setItem('cookie_prefs_allowed', 'true'); 
+    
+    const analyticsInput = document.getElementById('cookie_analytics');
+    const prefsInput = document.getElementById('cookie_prefs');
+    if (analyticsInput) analyticsInput.checked = true;
+    if (prefsInput) prefsInput.checked = true;
+
+    // Activamos todos los mapas inmediatamente
     loadAllMaps();
-    if (!document.getElementById('modalCookies').classList.contains('hidden')) toggleModal('modalCookies');
+
+    const modal = document.getElementById('modalCookies');
+    if (modal && !modal.classList.contains('hidden')) {
+        toggleModal('modalCookies');
+    }
+
+    console.log("Todas las cookies aceptadas y mapas liberados.");
 }
 
+// 3. Botón GUARDAR SELECCIÓN
 function saveCustomCookies() {
+    const banner = document.getElementById('cookie-law-banner');
     const analyticsChecked = document.getElementById('cookie_analytics')?.checked || false;
+    const prefsChecked = document.getElementById('cookie_prefs')?.checked || false; 
+
     localStorage.setItem('candil_cookies_decision', 'true');
     localStorage.setItem('cookie_analytics_allowed', analyticsChecked ? 'true' : 'false');
-    document.getElementById('cookie-law-banner')?.classList.add('hidden');
-    toggleModal('modalCookies');
-    if (analyticsChecked) loadAllMaps(); else unloadAllMaps();
+    localStorage.setItem('cookie_prefs_allowed', prefsChecked ? 'true' : 'false'); 
+
+    if (banner) {
+        banner.classList.add('hidden');
+    }
+    
+    const modal = document.getElementById('modalCookies');
+    if (modal && !modal.classList.contains('hidden')) {
+        toggleModal('modalCookies');
+    }
+    
+    // Control de los mapas según la selección granular
+    if (analyticsChecked) {
+        loadAllMaps();
+    } else {
+        unloadAllMaps();
+    }
+    
+    console.log("Preferencias de privacidad guardadas correctamente.");
 }
 
+// --- COMPROBACIÓN INICIAL AL CARGAR LA PÁGINA ---
 (function checkCookieStatus() {
+    const hasDecision = localStorage.getItem('candil_cookies_decision');
+    const banner = document.getElementById('cookie-law-banner');
+    const analyticsAllowed = localStorage.getItem('cookie_analytics_allowed');
+    const prefsAllowed = localStorage.getItem('cookie_prefs_allowed'); 
+    
+    if (banner) {
+        if (hasDecision === 'true') {
+            banner.classList.add('hidden');
+        } else {
+            banner.classList.remove('hidden');
+        }
+    }
+
+    // Inicialización del estado de los mapas según la memoria local
+    if (analyticsAllowed === 'true') {
+        window.addEventListener('DOMContentLoaded', loadAllMaps);
+    } else {
+        window.addEventListener('DOMContentLoaded', unloadAllMaps);
+    }
+
+    // Sincronizamos los checkboxes al cargar el DOM
     window.addEventListener('DOMContentLoaded', () => {
-        const hasDecision = localStorage.getItem('candil_cookies_decision');
-        const analyticsAllowed = localStorage.getItem('cookie_analytics_allowed');
+        const analyticsInput = document.getElementById('cookie_analytics');
+        const prefsInput = document.getElementById('cookie_prefs');
         
-        if (hasDecision !== 'true') document.getElementById('cookie-law-banner')?.classList.remove('hidden');
-        if (analyticsAllowed === 'true') loadAllMaps(); else unloadAllMaps();
-        
-        const input = document.getElementById('cookie_analytics');
-        if (input) input.checked = (analyticsAllowed === 'true');
+        if (analyticsInput) {
+            analyticsInput.checked = (analyticsAllowed === 'true');
+        }
+        if (prefsInput) {
+            prefsInput.checked = (prefsAllowed === 'true');
+        }
     });
 })();
 </script>
+
 </body>
 </html>

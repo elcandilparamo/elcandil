@@ -3,16 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nuestra Esencia | Bar El Candil</title>
+    <title>Senderismo por la zona | Bar El Candil</title>
 
-    <meta name="description" content="Conoce la historia y la cocina tradicional del Bar El Candil en Páramo del Sil. Raciones caseras elaboradas con el mejor producto local del Bierzo en un ambiente único.">
+    <meta name="description" content="Encuentra la ubicación exacta del Bar El Candil en Páramo del Sil, El Bierzo. Todo lo que necesitas saber sobre cómo llegar, mapa interactivo y horarios de apertura.">
     <meta name="author" content="ciberbross90">
     <meta name="copyright" content="ciberbross90">
 
-    <meta property="og:title" content="Nuestra Esencia y Cocina Tradicional | Bar El Candil">
-    <meta property="og:description" content="Descubre el sabor auténtico de la tradición berciana y raciones caseras en Páramo del Sil.">
+    <meta property="og:title" content="Ubicación y Horarios | Bar El Candil Páramo del Sil">
+    <meta property="og:description" content="¿Planeas una escapada al Bierzo? Localiza nuestro bar tradicional en el mapa y consulta cómo llegar fácilmente.">
     <meta property="og:image" content="https://elcandilparamo.github.io/img/hero-bg.jpg">
-    <meta property="og:url" content="https://elcandilparamo.github.io/esencia.html">
+    <meta property="og:url" content="https://elcandilparamo.github.io/ubicacion.html">
     <meta property="og:type" content="website">
 
     <script src="https://cdn.tailwindcss.com"></script>
@@ -20,7 +20,6 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
-
 
 
     <style>
@@ -140,6 +139,11 @@
             max-width: 1200px;
             margin: 0 auto;
         }
+	.container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
 
         .content-section {
             max-width: 1000px;
@@ -149,6 +153,17 @@
             grid-template-columns: 1fr 1fr;
             gap: 40px;
             align-items: center;
+        }
+	.intro-text {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .intro-text h2 {
+            font-family: 'Permanent Marker', cursive;
+            color: var(--neon-color);
+            font-size: 2.5rem;
+            margin-bottom: 20px;
         }
 
         .text-block h2 {
@@ -256,6 +271,62 @@
             margin-bottom: 15px;
         }
 
+	.ruta-row {
+            display: flex;
+            align-items: center;
+            gap: 30px;
+            margin-bottom: 40px; /* Reducido a la mitad */
+            flex-wrap: wrap;
+            padding: 15px;
+            background: rgba(255,255,255,0.02);
+            border-radius: 15px;
+        }
+
+        .ruta-row:nth-child(even) {
+            flex-direction: row-reverse;
+        }
+
+        .ruta-mapa {
+            flex: 1;
+            min-width: 280px;
+            height: 250px; /* Altura más compacta */
+            border: 1px solid #333;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .ruta-mapa iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+            filter: grayscale(0.4) contrast(1.1);
+        }
+
+        .ruta-info {
+            flex: 1.2;
+            min-width: 280px;
+        }
+
+        .ruta-info h3 {
+            font-family: 'Permanent Marker', cursive;
+            color: var(--neon-color);
+            font-size: 1.6rem;
+            margin-bottom: 8px;
+        }
+
+        .ruta-info p { margin-bottom: 6px; color: #ccc; font-size: 0.95rem; }
+
+        .tag-dificultad {
+            display: inline-block;
+            background: #222;
+            padding: 2px 10px;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            margin-bottom: 8px;
+            border: 1px solid var(--neon-color);
+            color: var(--neon-color);
+        }
+
         /* --- FOOTER CON MAPA --- */
         footer {
             background: #000;
@@ -283,7 +354,6 @@
         .contact-info h3 {
             color: var(--neon-color);
             margin-bottom: 20px;
-            /* Opcional: Un ligero brillo neón al título del footer */
             text-shadow: var(--neon-glow-subtle);
         }
         .modal-content {
@@ -305,13 +375,73 @@
         .animate-bounce-slow {
             animation: bounce-slow 3s infinite ease-in-out;
         }
+/* Fuerza a ocultar los elementos con la clase hidden (necesario para los modales) */
+        .hidden {
+            display: none !important;
+        }
+/* --- ESTILOS PARA LOS MODALES DE PRIVACIDAD --- */
+        .hidden {
+            display: none !important;
+        }
+        
+        .modal-back {
+            position: fixed;
+            inset: 0;
+            background-color: rgba(0, 0, 0, 0.85);
+            z-index: 100000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .modal-box {
+            background-color: #ffffff;
+            color: #333333;
+            max-width: 600px;
+            width: 100%;
+            border-radius: 20px;
+            border: 3px solid #ff3c00;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+        }
+
+        .modal-header {
+            padding: 15px 20px;
+            border-bottom: 1px solid #eeeeee;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #f9f9f9;
+        }
+
+        .modal-body {
+            padding: 20px;
+            font-size: 0.8rem;
+            line-height: 1.5;
+            max-height: 60vh;
+            overflow-y: auto;
+            text-align: justify;
+            color: #444444;
+        }
+
+        .modal-footer {
+            padding: 15px 20px;
+            border-top: 1px solid #eeeeee;
+            background-color: #f9f9f9;
+            display: flex;
+            justify-content: flex-end;
+            gap: 10px;
+        }
     </style>
 </head>
 <body>
 
     <div class="banner">
-        <div class="banner-img" style="background-image: url('ELCANDIL14.webp');"></div>
-        <div class="banner-img" style="background-image: url('ELCANDIL7.webp');"></div>
+        <div class="banner-img" style="background-image: url('ELCANDIL14.png');"></div>
+        <div class="banner-img" style="background-image: url('ELCANDIL7.jpeg');"></div>
     </div>
 
     <nav>
@@ -322,45 +452,180 @@
     </nav>
 
     <header class="header-esencia">
-	<h1>EL CANDIL</h1>
-        <p>Más que un bar, una forma de entender la vida.</p>
+        <h1>DONDE ESTAMOS</h1>
+        <p>Páramo del Sil: Naturaleza salvaje y alma rockera.</p>
     </header>
 
-    <section class="content-section">
-        <div class="text-block">
-            <h2>Jose y Ana: Alma Rockera</h2>
-            <p>En el corazón de Páramo del Sil, El Candil no es solo un lugar de paso. Es el refugio de Jose y Ana, dos "rockeros de la vieja guardia" que han convertido su pasión por el trato cercano en un arte.</p>
-            <p>Aquí no te recibe un camarero, te recibe una sonrisa genuina. Entre vinilos imaginarios y el aroma del mejor café de la zona, Jose se encarga de que la charla nunca falte, mientras Ana pone la magia en la cocina.</p>
-            <p><strong>Nuestra filosofía:</strong> Buena música, respeto por la tradición y la puerta siempre abierta para amigos nuevos y de toda la vida.</p>
-        </div>
-        <div class="image-frame">
-            <img src="ELCANDIL5.webp" alt="Jose en la barra">
-        </div>
-    </section>
+    <div class="container">
+        <section class="intro-text">
+            <h2>Un Entorno Privilegiado</h2>
+            <p>Bar El Candil se encuentra en el corazón de <strong>Páramo del Sil</strong>, un rincón único en El Bierzo donde las montañas abrazan el valle. Estamos situados justo frente al Parque Infantil Álvarez Carballo, el lugar perfecto para repostar tras una jornada de ruta, y donde los pequeños pueden recrearse jugando en el parque. Explora el entorno de Páramo del Sil y termina el día en El Candil.</p>
+        </section>
 
-    <div class="rock-banner">
-        <span class="rock-tag">AUTÉNTICO ROCK & ROLL</span>
-        <p style="font-style: italic; font-size: 1.2rem;">"Lo que ha unido la cerveza, que no lo separe el agua."</p>
+<div class="container">
+        
+<section class="ruta-row" style="display: flex; align-items: center; gap: 20px; margin-bottom: 30px;">
+    <div class="ruta-mapa" style="flex: 1.5; min-width: 300px; height: 450px; border: 1px solid #333; border-radius: 10px; overflow: hidden; background: #000; position: relative;">
+        <div class="wikiloc-placeholder" style="position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 20px; background-color: rgba(10,10,10,0.96); z-index: 10;">
+            <p style="color: #ccc; font-size: 0.85rem; margin-bottom: 15px; max-width: 320px; font-family: 'Segoe UI', sans-serif; line-height: 1.4;">
+                Para visualizar el mapa interactivo de esta ruta en Wikiloc, acepta las cookies analíticas de terceros.
+            </p>
+            <button onclick="activateMapsDirectly()" style="background-color: #ff3c00; color: white; padding: 8px 18px; border: none; border-radius: 20px; font-weight: bold; cursor: pointer; text-transform: uppercase; font-size: 0.7rem; letter-spacing: 0.5px; transition: transform 0.2s;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
+                Activar Mapa de Ruta
+            </button>
+        </div>
+        <iframe 
+            class="wikiloc-iframe"
+            data-src="https://es.wikiloc.com/wikiloc/embedv2.do?id=20797477&elevation=on&images=on&maptype=H" 
+            width="100%" 
+            height="520" 
+            frameborder="0" 
+            scrolling="no" 
+            style="border: none; position: absolute; top: -55px; left: 0; display: none;">
+        </iframe>
     </div>
+    <div class="ruta-info" style="flex: 1; min-width: 250px; padding: 10px;">
+        <span class="tag-dificultad">Dificultad: Baja</span>
+        <h3>Ruta de los Molinos</h3>
+        <p><strong>Inicio:</strong> El Candil - El Candil.</p>
+        <p><strong>Recorrido:</strong> La Ruta de los Molinos de Páramo del Sil es un sendero lineal y circular corto de baja dificultad, perfecto para realizar en familia o iniciarse en el senderismo. El recorrido sumerge al caminante en un frondoso bosque de ribera rodeado de castaños, nogales y robles.</p>
+        <p>Paseo llano ideal para abrir el apetito antes de pasar por El Candil.</p>
+        <div style="color:#777; font-size:11px; margin-top:15px;">
+            Powered by <a style="color:#4C8C2B; text-decoration:none;" target="_blank" href="https://es.wikiloc.com">Wikiloc</a>
+        </div>
+    </div>
+</section>
 
-    <section class="details-grid">
-        <div class="detail-card">
-            <img src="ELCANDIL20.webp" alt="Rosco de Ana">
-            <h3>El Secreto de Ana</h3>
-            <p>Muchos vienen por el café, pero todos se quedan por el <strong>rosco de bizcocho artesanal</strong>. Receta tradicional, esponjoso y hecho con el cariño que solo Ana sabe ponerle a sus hornadas.</p>
+<section class="ruta-row" style="display: flex; align-items: center; gap: 20px; margin-bottom: 30px;">
+    <div class="ruta-mapa" style="flex: 1.5; min-width: 300px; height: 450px; border: 1px solid #333; border-radius: 10px; overflow: hidden; background: #000; position: relative;">
+        <div class="wikiloc-placeholder" style="position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 20px; background-color: rgba(10,10,10,0.96); z-index: 10;">
+            <p style="color: #ccc; font-size: 0.85rem; margin-bottom: 15px; max-width: 320px; font-family: 'Segoe UI', sans-serif; line-height: 1.4;">
+                Para visualizar el mapa interactivo de esta ruta en Wikiloc, acepta las cookies analíticas de terceros.
+            </p>
+            <button onclick="activateMapsDirectly()" style="background-color: #ff3c00; color: white; padding: 8px 18px; border: none; border-radius: 20px; font-weight: bold; cursor: pointer; text-transform: uppercase; font-size: 0.7rem; letter-spacing: 0.5px; transition: transform 0.2s;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
+                Activar Mapa de Ruta
+            </button>
         </div>
-        <div class="detail-card">
-            <img src="ELCANDIL22.webp" alt="Jarra El Candil">
-            <h3>Detalles que Marcan</h3>
-            <p>Desde nuestras jarras personalizadas hasta cada rincón de madera, todo en El Candil cuenta una historia de esfuerzo y dedicación por nuestra tierra.</p>
+        <iframe 
+            class="wikiloc-iframe"
+            data-src="https://es.wikiloc.com/wikiloc/embedv2.do?id=5450714&elevation=on&images=on&maptype=H" 
+            width="100%" 
+            height="520" 
+            frameborder="0" 
+            scrolling="no" 
+            style="border: none; position: absolute; top: -55px; left: 0; display: none;">
+        </iframe>
+    </div>
+    <div class="ruta-info" style="flex: 1; min-width: 250px; padding: 10px;">
+        <span class="tag-dificultad">Dificultad: Media</span>
+        <h3>Ruta de las Brañas</h3>
+        <p><strong>Inicio:</strong> Cuevas del Sil.</p>
+        <p><strong>Recorrido:</strong> Un viaje impresionante por bosques y cabañas tradicionales de teito y piedra. Destacan las brañas de la Seita y Zarameo, ofreciendo un paisaje montañoso único en el Alto Sil.</p>
+        <div style="color:#777; font-size:11px; margin-top:15px;">
+            Powered by <a style="color:#4C8C2B; text-decoration:none;" target="_blank" href="https://es.wikiloc.com">Wikiloc</a>
         </div>
-        <div class="detail-card">
-            <img src="ELCANDIL12.webp" alt="Interior">
-            <h3>Siéntete en Casa</h3>
-            <p>Un ambiente cálido donde la madera y el brillo del neón se encuentran. El lugar perfecto para esa primera parada de la mañana o el relax tras un largo día.</p>
-            <span class="signature">- Jose y Ana</span>
+    </div>
+</section>
+
+<section class="ruta-row" style="display: flex; align-items: center; gap: 20px; margin-bottom: 30px;">
+    <div class="ruta-mapa" style="flex: 1.5; min-width: 300px; height: 450px; border: 1px solid #333; border-radius: 10px; overflow: hidden; background: #000; position: relative;">
+        <div class="wikiloc-placeholder-wiki3" style="position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 20px; background-color: rgba(10,10,10,0.96); z-index: 10;">
+            <p style="color: #ccc; font-size: 0.85rem; margin-bottom: 15px; max-width: 320px; font-family: 'Segoe UI', sans-serif; line-height: 1.4;">
+                Para visualizar el mapa interactivo de esta ruta en Wikiloc, acepta las cookies analíticas de terceros.
+            </p>
+            <button onclick="activateMapsDirectly()" style="background-color: #ff3c00; color: white; padding: 8px 18px; border: none; border-radius: 20px; font-weight: bold; cursor: pointer; text-transform: uppercase; font-size: 0.7rem; letter-spacing: 0.5px; transition: transform 0.2s;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
+                Activar Mapa de Ruta
+            </button>
         </div>
-    </section>
+        <iframe 
+            class="wikiloc-iframe"
+            data-src="https://es.wikiloc.com/wikiloc/embedv2.do?id=18470132&elevation=on&images=on&maptype=H" 
+            width="100%" 
+            height="520" 
+            frameborder="0" 
+            scrolling="no" 
+            style="border: none; position: absolute; top: -55px; left: 0; display: none;">
+        </iframe>
+    </div>
+    <div class="ruta-info" style="flex: 1; min-width: 250px; padding: 10px;">
+        <span class="tag-dificultad">Dificultad: Alta | Montañismo</span>
+        <h3>Ascensión al Catoute</h3>
+        <p><strong>Inicio:</strong> Colinas del Campo de Martín Moro Toledano.</p>
+        <p><strong>Recorrido:</strong> La ruta clásica para coronar el pico más emblemático de la Sierra de Gistredo (2.117 m). Un ascenso exigente y majestuoso, imprescindible para los amantes de la alta montaña.</p>
+        <div style="color:#777; font-size:11px; margin-top:15px;">
+            Powered by <a style="color:#4C8C2B; text-decoration:none;" target="_blank" href="https://es.wikiloc.com">Wikiloc</a>
+        </div>
+    </div>
+</section>
+
+<section class="ruta-row" style="display: flex; align-items: center; gap: 20px; margin-bottom: 30px;">
+    <div class="ruta-mapa" style="flex: 1.5; min-width: 300px; height: 450px; border: 1px solid #333; border-radius: 10px; overflow: hidden; background: #000; position: relative;">
+        <div class="wikiloc-placeholder-wiki4" style="position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 20px; background-color: rgba(10,10,10,0.96); z-index: 10;">
+            <p style="color: #ccc; font-size: 0.85rem; margin-bottom: 15px; max-width: 320px; font-family: 'Segoe UI', sans-serif; line-height: 1.4;">
+                Para visualizar el mapa interactivo de esta ruta en Wikiloc, acepta las cookies analíticas de terceros.
+            </p>
+            <button onclick="activateMapsDirectly()" style="background-color: #ff3c00; color: white; padding: 8px 18px; border: none; border-radius: 20px; font-weight: bold; cursor: pointer; text-transform: uppercase; font-size: 0.7rem; letter-spacing: 0.5px; transition: transform 0.2s;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
+                Activar Mapa de Ruta
+            </button>
+        </div>
+        <iframe 
+            class="wikiloc-iframe"
+            data-src="https://es.wikiloc.com/wikiloc/embedv2.do?id=19721876&elevation=on&images=on&maptype=H" 
+            width="100%" 
+            height="520" 
+            frameborder="0" 
+            scrolling="no" 
+            style="border: none; position: absolute; top: -55px; left: 0; display: none;">
+        </iframe>
+    </div>
+    <div class="ruta-info" style="flex: 1; min-width: 250px; padding: 10px;">
+        <span class="tag-dificultad">Dificultad: Alta | Montañismo</span>
+        <h3>Subida Pico el Miro | Lago Cheiroso</h3>
+        <p><strong>Inicio:</strong> Valdeprado (Cerca de Paramo).</p>
+        <p><strong>Recorrido:</strong> Una de las ascensiones más espectaculares del Alto Sil (1.990 m). Ofrece vistas panorámicas impresionantes hacia Asturias, el Valle de Fornela y las cimas de Ancares.</p>
+        <p>Un entorno salvaje que guarda la esencia más pura de la montaña berciana.</p>
+        <div style="color:#777; font-size:11px; margin-top:15px;">
+            Powered by <a style="color:#4C8C2B; text-decoration:none;" target="_blank" href="https://es.wikiloc.com">Wikiloc</a>
+        </div>
+    </div>
+</section>
+
+<section class="ruta-row" style="display: flex; align-items: center; gap: 20px; margin-bottom: 30px;">
+    <div class="ruta-mapa" style="flex: 1.5; min-width: 300px; height: 450px; border: 1px solid #333; border-radius: 10px; overflow: hidden; background: #000; position: relative;">
+        <div class="wikiloc-placeholder-wiki5" style="position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 20px; background-color: rgba(10,10,10,0.96); z-index: 10;">
+            <p style="color: #ccc; font-size: 0.85rem; margin-bottom: 15px; max-width: 320px; font-family: 'Segoe UI', sans-serif; line-height: 1.4;">
+                Para visualizar el mapa interactivo de esta ruta en Wikiloc, acepta las cookies analíticas de terceros.
+            </p>
+            <button onclick="activateMapsDirectly()" style="background-color: #ff3c00; color: white; padding: 8px 18px; border: none; border-radius: 20px; font-weight: bold; cursor: pointer; text-transform: uppercase; font-size: 0.7rem; letter-spacing: 0.5px; transition: transform 0.2s;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
+                Activar Mapa de Ruta
+            </button>
+        </div>
+        <iframe 
+            class="wikiloc-iframe"
+            data-src="https://es.wikiloc.com/wikiloc/embedv2.do?id=9345458&elevation=on&images=on&maptype=H" 
+            width="100%" 
+            height="520" 
+            frameborder="0" 
+            scrolling="no" 
+            style="border: none; position: absolute; top: -55px; left: 0; display: none;">
+        </iframe>
+    </div>
+    <div class="ruta-info" style="flex: 1; min-width: 250px; padding: 10px;">
+        <span class="tag-dificultad">Interés Cultural y Paisajístico</span>
+        <h3>Pardamaza - Primout</h3>
+        <p><strong>Inicio:</strong> Pardamaza (Cerca de Paramo).</p>
+        <p><strong>Recorrido:</strong> Un itinerario mágico que conecta Pardamaza con la aldea de Primout a la vera del río. Discurre entre bosques de ribera tapizados de musgo en un entorno de aislamiento absoluto.</p>
+        <p>Primout es una joya tradicional que mantiene intacta su atmósfera de paz y desconexión total.</p>
+        <div style="color:#777; font-size:11px; margin-top:15px;">
+            Powered by <a style="color:#4C8C2B; text-decoration:none;" target="_blank" href="https://es.wikiloc.com">Wikiloc</a>
+        </div>
+    </div>
+</section>
+
+        <p style="text-align: center; margin-top: 50px; font-style: italic; color: #888;">
+            "Antes o después de la montaña, la mejor recompensa es un café y un rosco en El Candil."
+        </p>
+    </div>
 
 <footer class="bg-gray-900 text-white pt-10 pb-6 border-t-4 border-[##ff3c00]" id="ubicacion">
     <div class="footer-container">

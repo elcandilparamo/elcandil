@@ -3,16 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nuestra Esencia | Bar El Candil</title>
+    <title>Contactanos | Bar El Candil</title>
 
-    <meta name="description" content="Conoce la historia y la cocina tradicional del Bar El Candil en Páramo del Sil. Raciones caseras elaboradas con el mejor producto local del Bierzo en un ambiente único.">
+    <meta name="description" content="Contacta con el Bar El Candil en Páramo del Sil. Reserva tu mesa, consulta nuestro horario o solicita información sobre eventos y las mejores rutas del Bierzo.">
     <meta name="author" content="ciberbross90">
     <meta name="copyright" content="ciberbross90">
 
-    <meta property="og:title" content="Nuestra Esencia y Cocina Tradicional | Bar El Candil">
-    <meta property="og:description" content="Descubre el sabor auténtico de la tradición berciana y raciones caseras en Páramo del Sil.">
+    <meta property="og:title" content="Contactanos | Bar El Candil">
+    <meta property="og:description" content="¿Quieres visitarnos en Páramo del Sil o consultar horarios? Contacta con nosotros de forma directa aquí.">
     <meta property="og:image" content="https://elcandilparamo.github.io/img/hero-bg.jpg">
-    <meta property="og:url" content="https://elcandilparamo.github.io/esencia.html">
+    <meta property="og:url" content="https://elcandilparamo.github.io/contacto.html">
     <meta property="og:type" content="website">
 
     <script src="https://cdn.tailwindcss.com"></script>
@@ -91,6 +91,87 @@
 
         nav a:hover {
             opacity: 0.7;
+        }
+
+/* --- SECCIÓN CONTACTO Y FORMULARIO --- */
+        .contact-header {
+            padding: 60px 20px 20px 20px;
+            text-align: center;
+        }
+
+        .contact-header h1 {
+            font-family: 'Permanent Marker', cursive;
+            font-size: 4rem;
+            color: white;
+            text-shadow: var(--neon-glow);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .form-container {
+            max-width: 700px;
+            margin: 0 auto 60px auto;
+            background: var(--card-bg);
+            padding: 40px;
+            border-radius: 20px;
+            border: 1px solid #222;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        .form-group label {
+            display: block;
+            color: #ccc;
+            margin-bottom: 8px;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: bold;
+        }
+
+        .form-control {
+            width: 100%;
+            background: #0a0a0a;
+            border: 1px solid #333;
+            border-radius: 8px;
+            padding: 12px 15px;
+            color: white;
+            font-size: 1rem;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--neon-color);
+            box-shadow: 0 0 10px rgba(255, 60, 0, 0.2);
+        }
+
+        .btn-submit {
+            width: 100%;
+            background: var(--neon-color);
+            color: white;
+            border: none;
+            padding: 15px;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            cursor: pointer;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            box-shadow: 0 0 15px rgba(255, 60, 0, 0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .btn-submit:hover {
+            transform: scale(1.02);
+            box-shadow: 0 0 25px rgba(255, 60, 0, 0.5);
         }
 
         /* --- CONTENIDO PRINCIPAL --- */
@@ -310,8 +391,8 @@
 <body>
 
     <div class="banner">
-        <div class="banner-img" style="background-image: url('ELCANDIL14.webp');"></div>
-        <div class="banner-img" style="background-image: url('ELCANDIL7.webp');"></div>
+        <div class="banner-img" style="background-image: url('ELCANDIL14.png');"></div>
+        <div class="banner-img" style="background-image: url('ELCANDIL7.jpeg');"></div>
     </div>
 
     <nav>
@@ -322,43 +403,38 @@
     </nav>
 
     <header class="header-esencia">
-	<h1>EL CANDIL</h1>
-        <p>Más que un bar, una forma de entender la vida.</p>
+        <h1>Contacto</h1>
+        <p class="text-gray-400 max-w-md mx-auto mt-2 text-sm md:text-base">¿Tienes alguna duda, quieres reservar o proponernos algo? Escríbenos directamente por WhatsApp.</p>
     </header>
 
-    <section class="content-section">
-        <div class="text-block">
-            <h2>Jose y Ana: Alma Rockera</h2>
-            <p>En el corazón de Páramo del Sil, El Candil no es solo un lugar de paso. Es el refugio de Jose y Ana, dos "rockeros de la vieja guardia" que han convertido su pasión por el trato cercano en un arte.</p>
-            <p>Aquí no te recibe un camarero, te recibe una sonrisa genuina. Entre vinilos imaginarios y el aroma del mejor café de la zona, Jose se encarga de que la charla nunca falte, mientras Ana pone la magia en la cocina.</p>
-            <p><strong>Nuestra filosofía:</strong> Buena música, respeto por la tradición y la puerta siempre abierta para amigos nuevos y de toda la vida.</p>
-        </div>
-        <div class="image-frame">
-            <img src="ELCANDIL5.webp" alt="Jose en la barra">
-        </div>
-    </section>
+    <section class="px-4">
+        <div class="form-container">
+            <form id="whatsappForm" onsubmit="sendToWhatsApp(event)">
+                <div class="form-group">
+                    <label for="nombre">Nombre Completo</label>
+                    <input type="text" id="nombre" class="form-control" placeholder="Ej. Juan Pérez" required>
+                </div>
 
-    <div class="rock-banner">
-        <span class="rock-tag">AUTÉNTICO ROCK & ROLL</span>
-        <p style="font-style: italic; font-size: 1.2rem;">"Lo que ha unido la cerveza, que no lo separe el agua."</p>
-    </div>
+                <div class="form-group">
+                    <label for="telefono">Teléfono de Contacto</label>
+                    <input type="tel" id="telefono" class="form-control" placeholder="Ej. 600000000" required>
+                </div>
 
-    <section class="details-grid">
-        <div class="detail-card">
-            <img src="ELCANDIL20.webp" alt="Rosco de Ana">
-            <h3>El Secreto de Ana</h3>
-            <p>Muchos vienen por el café, pero todos se quedan por el <strong>rosco de bizcocho artesanal</strong>. Receta tradicional, esponjoso y hecho con el cariño que solo Ana sabe ponerle a sus hornadas.</p>
-        </div>
-        <div class="detail-card">
-            <img src="ELCANDIL22.webp" alt="Jarra El Candil">
-            <h3>Detalles que Marcan</h3>
-            <p>Desde nuestras jarras personalizadas hasta cada rincón de madera, todo en El Candil cuenta una historia de esfuerzo y dedicación por nuestra tierra.</p>
-        </div>
-        <div class="detail-card">
-            <img src="ELCANDIL12.webp" alt="Interior">
-            <h3>Siéntete en Casa</h3>
-            <p>Un ambiente cálido donde la madera y el brillo del neón se encuentran. El lugar perfecto para esa primera parada de la mañana o el relax tras un largo día.</p>
-            <span class="signature">- Jose y Ana</span>
+                <div class="form-group">
+                    <label for="email">Correo Electrónico</label>
+                    <input type="email" id="email" class="form-control" placeholder="Ej. juan@email.com" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="mensaje">¿Dinos qué deseas?</label>
+                    <textarea id="mensaje" class="form-control" rows="5" placeholder="Escribe aquí tu consulta, reserva o sugerencia..." required></textarea>
+                </div>
+
+                <button type="submit" class="btn-submit">
+                    <i class="fa-brands fa-whatsapp text-xl"></i>
+                    Enviar por WhatsApp
+                </button>
+            </form>
         </div>
     </section>
 
